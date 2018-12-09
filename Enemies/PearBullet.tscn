@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/bullet.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/pear.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8.22672, 5.10258 )
+radius = 5.47804
 
 [node name="Bullet" type="Area2D"]
 input_pickable = true
@@ -14,17 +14,18 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 1024
-collision_mask = 5
+collision_layer = 2048
+collision_mask = 3
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-SPEED = 800
+SPEED = 200
 DAMAGE = 1
-LIFETIME = 1
-SPINING = false
+LIFETIME = 10.0
+SPINING = true
 
 [node name="bullet" type="Sprite" parent="."]
+modulate = Color( 0, 1, 0.203922, 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

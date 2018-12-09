@@ -9,4 +9,4 @@
 9 ladies dancing: Elas ficam girando e avançando no jogador
 10 Lords a-leaping: Eles ficam parados mas dão pulinhos
 11 Pipers piping: Inimigos normais que jogam notas musicais
-12 Twelve drummers drumming: Inimigos estaticos que atacam notas musicais
+12 drummers drumming: Inimigos estaticos que atacam notas musicais

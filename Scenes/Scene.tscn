@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://Tileset/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/EnemyBase.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Partridge_pear_tree.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,11 +54,8 @@ editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 556.849, 403.899 )
-
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 173.698, 270.569 )
-DISTANCE = Vector2( 100, 100 )
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 100.03, 374.212 )
 
 [connection signal="shoot" from="Player" to="." method="_on_shoot"]
+[connection signal="shoot" from="Enemy" to="." method="_on_shoot"]

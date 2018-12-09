@@ -5,7 +5,6 @@
 [ext_resource path="res://Sprites/gun.png" type="Texture" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -14,7 +13,7 @@ radius = 32.8641
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 500, 400 )
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
@@ -24,6 +23,7 @@ SHOOT_SPEED = 0.1
 SPEED = 400
 ACCELERATION = 10
 DE_ACCELERATION = 15
+HEALTH = 1
 
 [node name="Pivot" type="Node2D" parent="."]
 

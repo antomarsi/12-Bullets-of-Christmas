@@ -13,7 +13,10 @@ export (float) var SHOOT_TIMER = 2
 export (int) var HEALTH = 10
 
 var velocity = Vector2()
-onready var target = get_node("/root/Root/Player")
+onready var target = weakref(get_node("/root/Root/Player"))
+
+func _get_shoot_position():
+	return global_transform.origin
 
 func _ready():
 	$GunTimer.wait_time = SHOOT_TIMER
@@ -21,11 +24,14 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	if HEALTH <= 0:
-		pass
-	velocity = steer(target.global_position)
-	move_and_slide(velocity)
+	if HEALTH > 0:
+		_move()
 	
+func _move():
+	if target.get_ref():
+		velocity = steer(target.get_ref().global_position)
+		move_and_slide(velocity)
+
 func _process(delta):
 	if HEALTH <= 0:
 		pass
@@ -52,11 +58,11 @@ func flee(target):
 	return target_velocity
 	
 func _shoot(delta):
-	if can_shoot and Bullet:
+	if can_shoot and Bullet and target.get_ref():
 		can_shoot = false
 		$GunTimer.start()
-		var dir = (target.global_position - global_transform.origin).normalized()
-		emit_signal('shoot', Bullet, global_position, dir)
+		var dir = (target.get_ref().global_position - _get_shoot_position()).normalized()
+		emit_signal('shoot', Bullet, _get_shoot_position(), dir)
 
 func _on_GunTimer_timeout():
 	can_shoot = true

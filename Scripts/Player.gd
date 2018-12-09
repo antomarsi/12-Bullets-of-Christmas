@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal shoot
+signal take_hit
+signal died
 
 var anim
 var velocity = Vector2()
@@ -14,11 +16,13 @@ export (int) var ACCELERATION = 10
 export (int) var DE_ACCELERATION = 15
 var flip = false
 
+export (int) var HEALTH = 1
+
 func _ready():
 	anim = $AnimatedSprite
 	$GunTimer.wait_time = SHOOT_SPEED
 	pass
-	
+
 func _process(delta):
 	_aim_gun()
 	_handle_movement(delta)
@@ -60,10 +64,24 @@ func _handle_movement(delta):
 	
 	if (dir.dot(hv) > 0):
 		accel = ACCELERATION
+
 	velocity = hv.linear_interpolate(new_pos, accel * delta)
-	
 	velocity = move_and_slide(velocity);
-	
 
 func _on_GunTimer_timeout():
 	can_shoot = true
+
+func take_damage(damage):
+	HEALTH -= damage
+	emit_signal("take_hit", HEALTH)
+	if HEALTH <= 0:
+		die()
+
+func die():
+	emit_signal("died")
+	var camera = get_node("/root/Root/Player/Camera2D")
+	var cam_pos = camera.global_position
+	camera.get_parent().remove_child(camera)
+	get_node("/root/Root").add_child(camera)
+	camera.global_position = cam_pos
+	queue_free()
