@@ -1,0 +1,12 @@
+1 partridge in a pear tree: Inimigo lento que atira constantemente, alta vida
+2 Turtle doves: Inimigo que voa em direção ao player e dano em contato
+3 French hens: Inimigo normal, atira baguetes, queijos e vinho
+4 calling birds: Inimigo que mantem distancia enquanto atira
+5 golden rings: anda aleatóriamente e se alinhar com o jogador, ele dá um dash
+6 geese a-laying: personagens estáticos que jogam ovos
+7 swans a-swimming: Atacam juntos em formato de V
+8 maids a-milking: ataca galões de leite no x y
+9 ladies dancing: Elas ficam girando e avançando no jogador
+10 Lords a-leaping: Eles ficam parados mas dão pulinhos
+11 Pipers piping: Inimigos normais que jogam notas musicais
+12 Twelve drummers drumming: Inimigos estaticos que atacam notas musicais
