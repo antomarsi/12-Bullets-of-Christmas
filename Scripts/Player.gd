@@ -18,6 +18,7 @@ export (int) var DE_ACCELERATION = 15
 
 var flip = false
 var sprite_flip = false
+var invicibility = false
 export (int) var HEALTH = 10
 
 enum ANIM_STATE {
@@ -67,6 +68,7 @@ func _shoot(delta):
 	if Input.is_action_pressed("click") and can_shoot:
 		can_shoot = false
 		$GunTimer.start()
+		$Shoot.play()
 		var dir = ($Pivot/GunRoot/ShootPoint.global_transform.origin - global_transform.origin).normalized()
 		emit_signal('shoot', Bullet, $Pivot/GunRoot/ShootPoint.global_position, dir)
 
@@ -104,6 +106,11 @@ func _on_GunTimer_timeout():
 	can_shoot = true
 
 func take_damage(damage):
+	if invicibility:
+		return
+	invicibility = true
+	$Pivot/Sprite/Invicibility.play("Invencibility")
+	$Hit.play()
 	HEALTH -= damage
 	emit_signal("take_hit", HEALTH)
 	if HEALTH <= 0:
@@ -113,6 +120,7 @@ func take_damage(damage):
 func heal(amount):
 	HEALTH = clamp(HEALTH+amount, 0, 10)
 	emit_signal("take_hit", HEALTH)
+	$Heal.play()
 
 func die():
 	emit_signal("died")
@@ -120,3 +128,7 @@ func die():
 	camera.get_parent().remove_child(camera)
 	global.currentScene.add_child(camera)
 	camera.global_position = cam_pos
+	queue_free()
+
+func _on_Invicibility_animation_finished(anim_name):
+	invicibility = false

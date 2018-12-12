@@ -62,6 +62,7 @@ func _on_hit(body):
 	
 func take_damage(damage):
 	HEALTH -= damage
+	$Hit.play()
 	if HEALTH <= 0:
 		$CollisionShape2D.disabled = true
 		die()

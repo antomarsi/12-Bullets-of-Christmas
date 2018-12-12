@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWildJam"
-run/main_scene="res://Scenes/Scene.tscn"
+run/main_scene="res://Scenes/Title.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/drum_loop_150bpm.ogg-84eceb1fa3ab559bf7f63f29ada2a375.oggstr"
+
+[deps]
+
+source_file="res://Music/drum_loop_150bpm.ogg"
+dest_files=[ "res://.import/drum_loop_150bpm.ogg-84eceb1fa3ab559bf7f63f29ada2a375.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

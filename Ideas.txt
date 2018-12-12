@@ -1,6 +1,6 @@
 1 partridge in a pear tree: Inimigo lento que atira constantemente, alta vida
 2 Turtle doves: Inimigo que voa em direção ao player e dano em contato
-3 French hens: Inimigo normal, atira baguetes, queijos e vinho
+3 French hens: Inimigo normal, atira croasoint
 4 calling birds: Inimigo que mantem distancia enquanto atira
 5 golden rings: anda aleatóriamente e se alinhar com o jogador, ele dá um dash
 6 geese a-laying: personagens estáticos que jogam ovos

@@ -36,7 +36,7 @@ func _move():
 
 func _process(delta):
 	if HEALTH <= 0:
-		pass
+		return
 	_shoot(delta)
 
 func steer(target):
@@ -71,6 +71,8 @@ func _on_GunTimer_timeout():
 
 func take_damage(damage):
 	HEALTH -= damage
+	if $Hit:
+		$Hit.play()
 	if HEALTH <= 0:
 		$CollisionShape2D.disabled = true
 		die()

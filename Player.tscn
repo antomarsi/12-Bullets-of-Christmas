@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
@@ -11,8 +11,11 @@
 [ext_resource path="res://Sprites/Player/running3.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Player/running4.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Player/running5.png" type="Texture" id=11]
+[ext_resource path="res://Sound/PlayerHit.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sound/Pickup.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sound/Shoot.wav" type="AudioStream" id=14]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
@@ -25,6 +28,25 @@ animations = [ {
 "name": "Running",
 "speed": 10.0
 } ]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Invencibility"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=3]
 
@@ -63,9 +85,18 @@ scale = Vector2( 2, 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Pivot"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "Idle"
 frame = 1
+
+[node name="Invicibility" type="AnimationPlayer" parent="Pivot/Sprite"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Invencibility = SubResource( 2 )
+blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5.302 )
@@ -77,4 +108,38 @@ wait_time = 1.0
 one_shot = false
 autostart = true
 
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[connection signal="animation_finished" from="Pivot/Sprite/Invicibility" to="." method="_on_Invicibility_animation_finished"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
