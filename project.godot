@@ -19,6 +19,10 @@ config/name="GodotWildJam"
 run/main_scene="res://Scenes/Scene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://Scripts/global.gd"
+
 [input]
 
 move_up={

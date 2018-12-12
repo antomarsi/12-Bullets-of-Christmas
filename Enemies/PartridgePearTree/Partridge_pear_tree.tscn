@@ -1,28 +1,30 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemies/Partridge_pear_tree.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/PearBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/PartridgePearTree/Partridge_pear_tree.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/PartridgePearTree/PearBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/partridge_pear_tree.png" type="Texture" id=3]
+
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 41.0454
-height = 45.4315
+radius = 38.8549
+height = 36.7597
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Partridge_pear_tree" type="KinematicBody2D"]
 input_pickable = false
 collision_layer = 4
-collision_mask = 1024
+collision_mask = 1026
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
-MAX_SPEED = 50
+MAX_SPEED = 300
 MAX_FORCE = 0.02
 DISTANCE = Vector2( 0, 0 )
 SHOOT_TIMER = 2
-HEALTH = 50
+HEALTH = 10
 
 [node name="icon" type="Sprite" parent="."]
 texture = ExtResource( 3 )

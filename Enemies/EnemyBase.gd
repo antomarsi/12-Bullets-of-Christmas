@@ -13,12 +13,14 @@ export (float) var SHOOT_TIMER = 2
 export (int) var HEALTH = 10
 
 var velocity = Vector2()
-onready var target = weakref(get_node("/root/Root/Player"))
+onready var target = weakref(global.currentScene.get_node("Player"))
 
 func _get_shoot_position():
 	return global_transform.origin
 
 func _ready():
+	connect("died", global.currentScene, "_on_Enemy_died")
+	connect("shoot", global.currentScene, "_on_shoot")
 	$GunTimer.wait_time = SHOOT_TIMER
 	$GunTimer.start()
 	pass
@@ -74,5 +76,5 @@ func take_damage(damage):
 		die()
 
 func die():
-	emit_signal("died")
 	queue_free()
+	emit_signal("died")

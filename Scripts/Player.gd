@@ -4,9 +4,10 @@ signal shoot
 signal take_hit
 signal died
 
-var anim
 var velocity = Vector2()
 onready var gunRoot = $Pivot/GunRoot
+onready var camera = global.currentScene.get_node("Player/Camera2D")
+onready var anim_sprite = $Pivot/Sprite
 var can_shoot = false
 
 export (PackedScene) var Bullet
@@ -14,20 +15,34 @@ export (float) var SHOOT_SPEED = 0.1
 export (int) var SPEED = 400
 export (int) var ACCELERATION = 10
 export (int) var DE_ACCELERATION = 15
-var flip = false
 
-export (int) var HEALTH = 1
+var flip = false
+var sprite_flip = false
+export (int) var HEALTH = 10
+
+enum ANIM_STATE {
+	IDLE,
+	RUNNING
+}
+
+var anim_state = null
 
 func _ready():
-	anim = $AnimatedSprite
+	connect("shoot", global.currentScene, "_on_shoot")
+	connect("take_hit", global.currentScene, "_on_Player_take_hit")
 	$GunTimer.wait_time = SHOOT_SPEED
+	_set_state(ANIM_STATE.IDLE)
 	pass
+
+func _physics_process(delta):
+	_handle_movement(delta)
 
 func _process(delta):
 	_aim_gun()
-	_handle_movement(delta)
 	_shoot(delta)
-	
+	$Pivot/Sprite.flip_h = velocity.x < 0
+		
+
 func _aim_gun():
 	var mouse_pos = get_global_mouse_position()
 	gunRoot.look_at(mouse_pos)
@@ -39,12 +54,21 @@ func _aim_gun():
 		$Pivot/GunRoot/GunSprite.flip_v = true
 		flip = true
 
+func _set_state(new_state):
+	if new_state != anim_state:
+		anim_state = new_state
+		if anim_state == ANIM_STATE.RUNNING:
+			anim_sprite.play("Running")
+		else:
+			anim_sprite.play("Idle")
+			
+
 func _shoot(delta):
 	if Input.is_action_pressed("click") and can_shoot:
 		can_shoot = false
 		$GunTimer.start()
-		var dir = ($Pivot/GunRoot/GunSprite/ShootPoint.global_transform.origin - global_transform.origin).normalized()
-		emit_signal('shoot', Bullet, $Pivot/GunRoot/GunSprite/ShootPoint.global_position, dir)
+		var dir = ($Pivot/GunRoot/ShootPoint.global_transform.origin - global_transform.origin).normalized()
+		emit_signal('shoot', Bullet, $Pivot/GunRoot/ShootPoint.global_position, dir)
 
 func _handle_movement(delta):
 	var dir = Vector2()
@@ -56,6 +80,14 @@ func _handle_movement(delta):
 		dir.y += 1
 	if Input.is_action_pressed("move_up"):
 		dir.y -= 1
+	if Input.is_key_pressed(KEY_F):
+		camera.shake(0.5, 20, 25)
+
+	if dir.x != 0 or dir.y != 0:
+		_set_state(ANIM_STATE.RUNNING)
+	else:
+		_set_state(ANIM_STATE.IDLE)
+
 	dir = dir.normalized()
 	
 	var new_pos = dir * SPEED
@@ -76,12 +108,15 @@ func take_damage(damage):
 	emit_signal("take_hit", HEALTH)
 	if HEALTH <= 0:
 		die()
+	camera.shake(0.5, 20, 25)
+
+func heal(amount):
+	HEALTH = clamp(HEALTH+amount, 0, 10)
+	emit_signal("take_hit", HEALTH)
 
 func die():
 	emit_signal("died")
-	var camera = get_node("/root/Root/Player/Camera2D")
 	var cam_pos = camera.global_position
 	camera.get_parent().remove_child(camera)
-	get_node("/root/Root").add_child(camera)
+	global.currentScene.add_child(camera)
 	camera.global_position = cam_pos
-	queue_free()
