@@ -11,20 +11,23 @@ export (float) var MAX_FORCE = 0.02
 export (Vector2) var DISTANCE = Vector2()
 export (float) var SHOOT_TIMER = 2
 export (int) var HEALTH = 10
+export (bool) var MULTI_SHOOT = false
 
 var velocity = Vector2()
 onready var target = weakref(global.currentScene.get_node("Player"))
-
-func _get_shoot_position():
-	return global_transform.origin
+onready var sprite = $Sprite
+var gun_point
 
 func _ready():
+	initialize()
 	connect("died", global.currentScene, "_on_Enemy_died")
 	connect("shoot", global.currentScene, "_on_shoot")
 	$GunTimer.wait_time = SHOOT_TIMER
 	$GunTimer.start()
+
+func initialize():
 	pass
-	
+
 func _physics_process(delta):
 	if HEALTH > 0:
 		_move()
@@ -33,11 +36,13 @@ func _move():
 	if target.get_ref():
 		velocity = steer(target.get_ref().global_position)
 		move_and_slide(velocity)
+		sprite.flip_h = ((target.get_ref().global_position - global_position).normalized()).x <= 0
 
 func _process(delta):
 	if HEALTH <= 0:
 		return
-	_shoot(delta)
+	if can_shoot and Bullet and target.get_ref():
+		_shoot(delta)
 
 func steer(target):
 	var desired_velocity = (target - position)
@@ -60,11 +65,19 @@ func flee(target):
 	return target_velocity
 	
 func _shoot(delta):
-	if can_shoot and Bullet and target.get_ref():
-		can_shoot = false
-		$GunTimer.start()
-		var dir = (target.get_ref().global_position - _get_shoot_position()).normalized()
-		emit_signal('shoot', Bullet, _get_shoot_position(), dir)
+	can_shoot = false
+	$GunTimer.start()
+	if MULTI_SHOOT and typeof(gun_point) == TYPE_ARRAY:
+		for shoot_position in gun_point:
+			var dir = (target.get_ref().global_position - shoot_position.global_position).normalized()
+			emit_signal('shoot', Bullet, shoot_position.global_position, dir)
+	elif typeof(gun_point) == TYPE_ARRAY:
+		var shoot_position = gun_point[randi() % gun_point.size()].global_position
+		var dir = (target.get_ref().global_position - shoot_position).normalized()
+		emit_signal('shoot', Bullet, shoot_position, dir)
+	else:
+		var dir = (target.get_ref().global_position - gun_point.global_position).normalized()
+		emit_signal('shoot', Bullet, gun_point.global_position, dir)
 
 func _on_GunTimer_timeout():
 	can_shoot = true

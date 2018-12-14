@@ -1,29 +1,30 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/gun.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/idle1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/idle2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/idle3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/running1.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/running2.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/running3.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/running4.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/running5.png" type="Texture" id=11]
-[ext_resource path="res://Sound/PlayerHit.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sound/Pickup.wav" type="AudioStream" id=13]
-[ext_resource path="res://Sound/Shoot.wav" type="AudioStream" id=14]
+[ext_resource path="res://Scripts/GunController.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/gun.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/idle1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/idle2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/idle3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/running1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/running2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/running3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/running4.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/running5.png" type="Texture" id=12]
+[ext_resource path="res://Sound/PlayerHit.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sound/Pickup.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sound/Shoot.wav" type="AudioStream" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Running",
 "speed": 10.0
@@ -48,14 +49,18 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 18.8406
-height = 17.897
+extents = Vector2( 18, 8 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 16.0
+height = 10.0
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 500, 400 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 1
@@ -70,20 +75,29 @@ DE_ACCELERATION = 15
 HEALTH = 1
 
 [node name="Pivot" type="Node2D" parent="."]
+position = Vector2( 0, -32 )
 
 [node name="GunRoot" type="Position2D" parent="Pivot"]
+script = ExtResource( 3 )
 
 [node name="GunSprite" type="Sprite" parent="Pivot/GunRoot"]
 position = Vector2( 35, 6.37 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 flip_h = true
 
 [node name="ShootPoint" type="Position2D" parent="Pivot/GunRoot"]
 position = Vector2( 52.472, 0 )
 scale = Vector2( 2, 2 )
 
+[node name="GunTimer" type="Timer" parent="Pivot/GunRoot"]
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
 [node name="Sprite" type="AnimatedSprite" parent="Pivot"]
+editor/display_folded = true
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "Idle"
@@ -99,27 +113,10 @@ anims/Invencibility = SubResource( 2 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5.302 )
+position = Vector2( 0, -8 )
 shape = SubResource( 3 )
 
-[node name="GunTimer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-
-[node name="Heal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 13 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -130,7 +127,7 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+[node name="Heal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 14 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -141,5 +138,29 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="hitbox" type="Area2D" parent="."]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2( 0, -26.91 )
+shape = SubResource( 4 )
+
+[connection signal="timeout" from="Pivot/GunRoot/GunTimer" to="Pivot/GunRoot" method="_on_GunTimer_timeout"]
 [connection signal="animation_finished" from="Pivot/Sprite/Invicibility" to="." method="_on_Invicibility_animation_finished"]
-[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet.png-a182009cabb947fb3feeff3699426a6d.stex"
+path="res://.import/GalinhaFrancesa1.png-05f93da52f50eb399ed560a1fcc21384.stex"
 
 [deps]
 
-source_file="res://raw/bullet.png"
-dest_files=[ "res://.import/bullet.png-a182009cabb947fb3feeff3699426a6d.stex" ]
+source_file="res://Sprites/Enemies/GalinhaFrancesa1.png"
+dest_files=[ "res://.import/GalinhaFrancesa1.png-05f93da52f50eb399ed560a1fcc21384.stex" ]
 
 [params]
 

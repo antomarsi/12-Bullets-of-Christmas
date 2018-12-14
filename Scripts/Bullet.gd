@@ -4,6 +4,7 @@ export (int) var SPEED = 800
 export (int) var DAMAGE = 1
 export (float) var LIFETIME = 1
 export (bool) var SPINING = false
+var TYPE = global.DO_DAMAGE_TO.ENEMY
 
 var velocity = Vector2()
 
@@ -27,6 +28,5 @@ func _on_Lifetime_timeout():
 	explode()
 
 func _on_Bullet_body_entered(body):
-	explode()
 	if body.has_method('take_damage'):
 		body.take_damage(DAMAGE)

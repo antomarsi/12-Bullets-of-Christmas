@@ -2,6 +2,11 @@ extends Node
 
 var currentScene = null
 
+enum TYPE {
+	PLAYER,
+	ENEMY
+}
+
 func _ready():
 	currentScene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Simple-Base-transparrent.png-337b733936b7846a8d3ca0568396be7a.stex"
+path="res://.import/lord_a_leaping2.png-74e62b35be875803698dfe615ae62569.stex"
 
 [deps]
 
-source_file="res://raw/Simple-Base-transparrent.png"
-dest_files=[ "res://.import/Simple-Base-transparrent.png-337b733936b7846a8d3ca0568396be7a.stex" ]
+source_file="res://Sprites/Enemies/lord_a_leaping2.png"
+dest_files=[ "res://.import/lord_a_leaping2.png-74e62b35be875803698dfe615ae62569.stex" ]
 
 [params]
 

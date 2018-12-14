@@ -8,7 +8,7 @@ var velocity = Vector2()
 onready var gunRoot = $Pivot/GunRoot
 onready var camera = global.currentScene.get_node("Player/Camera2D")
 onready var anim_sprite = $Pivot/Sprite
-var can_shoot = false
+
 
 export (PackedScene) var Bullet
 export (float) var SHOOT_SPEED = 0.1
@@ -16,9 +16,9 @@ export (int) var SPEED = 400
 export (int) var ACCELERATION = 10
 export (int) var DE_ACCELERATION = 15
 
-var flip = false
 var sprite_flip = false
 var invicibility = false
+var TYPE = global.TYPE.PLAYER
 export (int) var HEALTH = 10
 
 enum ANIM_STATE {
@@ -31,7 +31,6 @@ var anim_state = null
 func _ready():
 	connect("shoot", global.currentScene, "_on_shoot")
 	connect("take_hit", global.currentScene, "_on_Player_take_hit")
-	$GunTimer.wait_time = SHOOT_SPEED
 	_set_state(ANIM_STATE.IDLE)
 	pass
 
@@ -39,21 +38,15 @@ func _physics_process(delta):
 	_handle_movement(delta)
 
 func _process(delta):
-	_aim_gun()
-	_shoot(delta)
 	$Pivot/Sprite.flip_h = velocity.x < 0
-		
+	_damage_loop()
 
-func _aim_gun():
-	var mouse_pos = get_global_mouse_position()
-	gunRoot.look_at(mouse_pos)
-
-	if mouse_pos.x > global_position.x:
-		$Pivot/GunRoot/GunSprite.flip_v = false
-		flip = false
-	elif mouse_pos.x < global_position.x:
-		$Pivot/GunRoot/GunSprite.flip_v = true
-		flip = true
+func _damage_loop():
+	if invicibility:
+		return
+	for body in $hitbox.get_overlapping_areas():
+		if body.get("DAMAGE") != null and body.get("TYPE") != TYPE:
+			pass
 
 func _set_state(new_state):
 	if new_state != anim_state:
@@ -62,15 +55,6 @@ func _set_state(new_state):
 			anim_sprite.play("Running")
 		else:
 			anim_sprite.play("Idle")
-			
-
-func _shoot(delta):
-	if Input.is_action_pressed("click") and can_shoot:
-		can_shoot = false
-		$GunTimer.start()
-		$Shoot.play()
-		var dir = ($Pivot/GunRoot/ShootPoint.global_transform.origin - global_transform.origin).normalized()
-		emit_signal('shoot', Bullet, $Pivot/GunRoot/ShootPoint.global_position, dir)
 
 func _handle_movement(delta):
 	var dir = Vector2()
@@ -100,10 +84,7 @@ func _handle_movement(delta):
 		accel = ACCELERATION
 
 	velocity = hv.linear_interpolate(new_pos, accel * delta)
-	velocity = move_and_slide(velocity);
-
-func _on_GunTimer_timeout():
-	can_shoot = true
+	velocity = move_and_slide(velocity)
 
 func take_damage(damage):
 	if invicibility:

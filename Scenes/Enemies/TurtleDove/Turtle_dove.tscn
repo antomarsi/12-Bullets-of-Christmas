@@ -1,39 +1,39 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemies/EnemyBase.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Enemies/TurtleDove/Turtle_dove.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Sound/EnemyHit.wav" type="AudioStream" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 31.0445
+radius = 31.8897
+height = 1.01424
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Turtle_dove" type="KinematicBody2D"]
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 4
+collision_mask = 3
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
 script = ExtResource( 1 )
-Bullet = null
-MAX_SPEED = 300
+MAX_SPEED = 10
 MAX_FORCE = 0.02
 DISTANCE = Vector2( 0, 0 )
-SHOOT_TIMER = 2
 HEALTH = 10
 
-[node name="icon" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="GunTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
@@ -46,4 +46,4 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
