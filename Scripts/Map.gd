@@ -29,7 +29,3 @@ func _on_EnemyKillTimer_timeout():
 	print($Enemies.get_child_count())
 	if $Enemies.get_child_count() == 0:
 		_go_next_scene()
-
-
-func _on_Turtle_dove_died():
-	pass # Replace with function body.

@@ -1,19 +1,20 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
-[ext_resource path="res://Tileset/Tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Life/life-1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Life/life-2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Life/life-3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Life/life-4.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Life/life-loop2.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Life/life-loop1.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Life/life-last.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Transitions/shards.png" type="Texture" id=12]
-[ext_resource path="res://Music/guitar_loop_150bpm.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Music/drum_loop_150bpm.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Scripts/NavController.gd" type="Script" id=2]
+[ext_resource path="res://Tileset/Tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Life/life-1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Life/life-2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Life/life-3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Life/life-4.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Life/life-loop2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Life/life-loop1.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Life/life-last.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Transitions/shards.png" type="Texture" id=13]
+[ext_resource path="res://Music/guitar_loop_150bpm.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Music/drum_loop_150bpm.ogg" type="AudioStream" id=15]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -75,7 +76,7 @@ render_priority = 0
 shader = SubResource( 2 )
 shader_param/cutoff = 0.0
 shader_param/smooth_size = 0.1
-shader_param/mask = ExtResource( 12 )
+shader_param/mask = ExtResource( 13 )
 
 [sub_resource type="Animation" id=4]
 
@@ -131,11 +132,12 @@ next_world = "res://Scenes/Levels/Scene.tscn"
 
 [node name="nav" type="Navigation2D" parent="."]
 rotation = -0.00549433
+script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="nav"]
 show_behind_parent = true
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -155,7 +157,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="PathUpdate" type="Timer" parent="nav"]
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 70.2968, 217.757 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -181,7 +189,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -237,7 +245,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 stretch_mode = 3
 
 [node name="2" type="TextureRect" parent="GUI/TopView/Health"]
@@ -255,7 +263,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 stretch_mode = 3
 
 [node name="3" type="TextureRect" parent="GUI/TopView/Health"]
@@ -273,7 +281,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 stretch_mode = 3
 
 [node name="4" type="TextureRect" parent="GUI/TopView/Health"]
@@ -291,7 +299,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 stretch_mode = 3
 
 [node name="5" type="TextureRect" parent="GUI/TopView/Health"]
@@ -309,7 +317,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 3
 
 [node name="6" type="TextureRect" parent="GUI/TopView/Health"]
@@ -327,7 +335,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 3
 
 [node name="7" type="TextureRect" parent="GUI/TopView/Health"]
@@ -345,7 +353,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 3
 
 [node name="8" type="TextureRect" parent="GUI/TopView/Health"]
@@ -363,7 +371,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 3
 
 [node name="9" type="TextureRect" parent="GUI/TopView/Health"]
@@ -381,7 +389,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 3
 
 [node name="10" type="TextureRect" parent="GUI/TopView/Health"]
@@ -399,7 +407,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 stretch_mode = 3
 
 [node name="Particles2D" type="Particles2D" parent="GUI/TopView/Health"]
@@ -470,15 +478,6 @@ one_shot = true
 autostart = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = true
-stream_paused = false
-mix_target = 0
-bus = "Master"
-
-[node name="Music2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -487,4 +486,14 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="timeout" from="nav/PathUpdate" to="nav" method="_on_PathUpdate_timeout"]
 [connection signal="timeout" from="EnemyKillTimer" to="." method="_on_EnemyKillTimer_timeout"]

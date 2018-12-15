@@ -29,7 +29,6 @@ HEALTH = 5
 
 [node name="Sprite" parent="." index="0"]
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]

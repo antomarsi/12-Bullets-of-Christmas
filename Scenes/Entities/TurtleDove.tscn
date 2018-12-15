@@ -65,7 +65,7 @@ tracks/0/keys = {
 }
 
 [node name="TurtleDove" instance=ExtResource( 1 )]
-SPEED = 150
+SPEED = 300
 ACCELERATION = 20
 HEALTH = 4
 
@@ -74,6 +74,7 @@ position = Vector2( 0, -31.9739 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "blue"
+frame = 1
 playing = true
 flip_h = true
 script = ExtResource( 10 )

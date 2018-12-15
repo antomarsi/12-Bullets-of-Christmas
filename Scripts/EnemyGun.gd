@@ -5,6 +5,7 @@ export (float) var SHOOT_TIMER = 1
 export (PackedScene) var Bullet
 export (float) var SHOOT_DISTANCE = 400
 onready var has_gun = $ShootPositions.get_child_count() > 0
+onready var target = global.player_ref
 var guns
 
 func _ready():
@@ -15,20 +16,29 @@ func _ready():
 		$ShootTimer.wait_time = SHOOT_TIMER + randi() % 3
 		$ShootTimer.start()
 
+func aim(target):
+	return target.get_ref().global_position
+
 func _on_ShootTimer_timeout():
-	var target = get_parent().target
 	if not has_gun or not target:
 		return
+	shoot()
+
+func shoot():
 	if global_position.distance_to(target.get_ref().global_position) > SHOOT_DISTANCE:
 		return
+	var target_position = aim(target)
 	if guns.size() == 1:
-		var dir = (target.get_ref().global_position - guns[0].global_position).normalized()
-		get_parent().emit_signal('shoot', Bullet, guns[0].global_position, dir)
+		var dir = (target_position - guns[0].global_position).normalized()
+		emit_shoot(dir, guns[0].global_position)
 	elif not MULTISHOOT:
 		var shoot_position = guns[randi() % guns.size()].global_position
-		var dir = (target.get_ref().global_position - shoot_position).normalized()
-		get_parent().emit_signal('shoot', Bullet, shoot_position, dir)
+		var dir = (target_position - shoot_position).normalized()
+		emit_shoot(dir, shoot_position)
 	else:
 		for shoot_position in guns:
-			var dir = (target.get_ref().global_position - shoot_position.global_position).normalized()
-			get_parent().emit_signal('shoot', Bullet, shoot_position.global_position, dir)
+			var dir = (target_position - shoot_position.global_position).normalized()
+			emit_shoot(dir, shoot_position.global_position)
+
+func emit_shoot(dir, shoot_position):
+	get_parent().emit_signal('shoot', Bullet, shoot_position, dir)

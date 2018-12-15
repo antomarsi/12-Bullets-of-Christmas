@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Entities/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/FiveGoldenRings.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Enemies/FiveGoldRings.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/FiveGoldenGun.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Bullets/PearBullet.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 41.4437
+
+[node name="FiveGoldenRings" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+SPEED = 200
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.875961, 29.5009 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( -14.0724, 0.890977 )
+shape = SubResource( 2 )
+
+[node name="Gun" parent="." index="4"]
+script = ExtResource( 4 )
+Bullet = ExtResource( 5 )
+
+[node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
+position = Vector2( 41.4209, -25.5271 )
+
+[node name="Position2D2" type="Position2D" parent="Gun/ShootPositions" index="1"]
+position = Vector2( 41.3088, 31.0617 )
+

@@ -95,7 +95,7 @@ script = ExtResource( 10 )
 Bullet = ExtResource( 11 )
 
 [node name="GunSprite" type="Sprite" parent="GunRoot"]
-position = Vector2( 35, 6.37 )
+position = Vector2( 35, 10.52 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 flip_h = true
