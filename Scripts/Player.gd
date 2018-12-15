@@ -39,14 +39,6 @@ func _physics_process(delta):
 
 func _process(delta):
 	$Pivot/Sprite.flip_h = velocity.x < 0
-	_damage_loop()
-
-func _damage_loop():
-	if invicibility:
-		return
-	for body in $hitbox.get_overlapping_areas():
-		if body.get("DAMAGE") != null and body.get("TYPE") != TYPE:
-			pass
 
 func _set_state(new_state):
 	if new_state != anim_state:

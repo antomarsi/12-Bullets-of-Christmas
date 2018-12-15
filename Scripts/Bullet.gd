@@ -3,10 +3,19 @@ extends Area2D
 export (int) var SPEED = 800
 export (int) var DAMAGE = 1
 export (float) var LIFETIME = 1
-export (bool) var SPINING = false
-var TYPE = global.DO_DAMAGE_TO.ENEMY
+export (float) var SPIN = 0
+
+enum BULLET_TYPE {
+	ENEMY,
+	PLAYER
+}
+onready var TYPE = global.ENTITY.PLAYER
+export (BULLET_TYPE) var bullet_type
 
 var velocity = Vector2()
+func _ready():
+	if bullet_type == BULLET_TYPE.ENEMY:
+		TYPE = global.ENTITY.ENEMY_NO_KNOCKBACK
 
 func start(_position, _direction):
 	position = _position
@@ -17,8 +26,8 @@ func start(_position, _direction):
 
 func _process(delta):
 	position += velocity * delta
-	if SPINING:
-		rotation += delta
+	if SPIN > 0:
+		rotation += delta * SPIN
 	pass
 	
 func explode():
@@ -26,7 +35,3 @@ func explode():
 
 func _on_Lifetime_timeout():
 	explode()
-
-func _on_Bullet_body_entered(body):
-	if body.has_method('take_damage'):
-		body.take_damage(DAMAGE)

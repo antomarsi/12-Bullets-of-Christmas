@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Entities/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa2.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Bullets/PearBullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.771, 10 )
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 22.2067
+
+[node name="FrenchHen" instance=ExtResource( 1 )]
+HEALTH = 5
+
+[node name="Sprite" parent="." index="0"]
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="Gun" parent="." index="4"]
+SHOOT_TIMER = 3.0
+Bullet = ExtResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
+position = Vector2( 13.3301, -26.8862 )
+

@@ -1,9 +1,13 @@
 extends Position2D
-onready var player = get_parent().get_parent()
+onready var player = get_parent()
+
+export (PackedScene) var Bullet
+
 var can_shoot = false
 var flip = false
 
 func _ready():
+	player.connect("shoot", global.currentScene, "_on_shoot")
 	$GunTimer.wait_time = player.SHOOT_SPEED
 	$GunTimer.start()
 	pass
@@ -17,8 +21,8 @@ func _shoot(delta):
 		can_shoot = false
 		$GunTimer.start()
 		$Shoot.play()
-		var dir = ($Pivot/GunRoot/ShootPoint.global_transform.origin - global_transform.origin).normalized()
-		player.emit_signal('shoot', player.Bullet, $ShootPoint.global_position, dir)
+		var dir = ($ShootPoint.global_transform.origin - global_transform.origin).normalized()
+		player.emit_signal('shoot', Bullet, $ShootPoint.global_position, dir)
 
 func _aim_gun():
 	var mouse_pos = get_global_mouse_position()
