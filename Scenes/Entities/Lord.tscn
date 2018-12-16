@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Entities/Swan.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/lord_a_leaping1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/lord_a_leaping2.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Leap.gd" type="Script" id=4]
+
+
+
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "leap",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.6962, 4.83856 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 49.8561
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.7892, 10 )
+
+[node name="Lord" index="0" instance=ExtResource( 1 )]
+SPEED = 400
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -2.91988, -38.584 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 1 )
+animation = "leap"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, -3.428 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 0.587388, -35.4916 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox" index="1"]
+position = Vector2( 0, -35 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Gun" parent="." index="4"]
+script = ExtResource( 4 )
+
+[node name="ShootTimer" parent="Gun" index="1"]
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="Gun" index="2"]
+process_mode = 1
+wait_time = 1.5
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="Gun/IdleTimer" to="Gun" method="_on_IdleTimer_timeout"]

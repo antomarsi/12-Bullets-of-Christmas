@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/12 Days of Christmas Hard Rock Cover.ogg-e9d5c4f6d37af8df0806dc10cbe4ccd8.oggstr"
+
+[deps]
+
+source_file="res://raw/12 Days of Christmas Hard Rock Cover.ogg"
+dest_files=[ "res://.import/12 Days of Christmas Hard Rock Cover.ogg-e9d5c4f6d37af8df0806dc10cbe4ccd8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

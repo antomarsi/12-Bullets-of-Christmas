@@ -26,6 +26,8 @@ func player_died():
 	stop = true
 
 func update_path(nav, player_position):
+	if stop:
+		return
 	path = nav.get_simple_path(global_position, player_position)
 	set_physics_process (true)
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lady_dancing.png-543ae59a7f708b07165691b9cf32b7e5.stex"
+path="res://.import/maid_a_milking3.png-673f44c2ec426f90cf5cb2e367571ae7.stex"
 
 [deps]
 
-source_file="res://Sprites/Enemies/lady_dancing.png"
-dest_files=[ "res://.import/lady_dancing.png-543ae59a7f708b07165691b9cf32b7e5.stex" ]
+source_file="res://Sprites/Enemies/maid_a_milking3.png"
+dest_files=[ "res://.import/maid_a_milking3.png-673f44c2ec426f90cf5cb2e367571ae7.stex" ]
 
 [params]
 
@@ -17,7 +17,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -27,5 +27,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

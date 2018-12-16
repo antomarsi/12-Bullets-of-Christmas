@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Entities/TurtleDove.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/Cisne-Nadando1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/Cisne-Nadando2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Swan" index="0" instance=ExtResource( 1 )]
+SPEED = 250
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 0
+flip_h = false
+script = null
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 38.952 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 0.108918, 3.54009 )
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Faixa10.ogg-3ca4f8ade9e45e72b770cda4ccb824c4.oggstr"
+
+[deps]
+
+source_file="res://Music/Verses/Faixa10.ogg"
+dest_files=[ "res://.import/Faixa10.ogg-3ca4f8ade9e45e72b770cda4ccb824c4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
