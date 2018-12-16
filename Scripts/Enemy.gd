@@ -14,8 +14,8 @@ const DAMAGE = 1
 func _initialize():
 	._initialize()
 	if TRACK == FOLLOW_TYPE.FOLLOW:
-		global.currentScene.get_node("nav").connect("path_update", self, "update_path")
-	connect("died", global.currentScene, "_on_Enemy_died")
+		global.get_current_scene().get_node("nav").connect("path_update", self, "update_path")
+	connect("died", global.get_current_scene(), "_on_Enemy_died")
 
 func _physics_process(delta):
 	if TRACK == FOLLOW_TYPE.STATIC:
@@ -27,6 +27,8 @@ func player_died():
 
 func update_path(nav, player_position):
 	if stop:
+		return
+	if global_position.distance_to(player_position) < 100:
 		return
 	path = nav.get_simple_path(global_position, player_position)
 	set_physics_process (true)

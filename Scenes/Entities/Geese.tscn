@@ -1,24 +1,22 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Entities/EnemyBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Enemies/geese_a_laying2.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Enemies/geese_a_laying1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemies/geese_a_laying1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/geese_a_laying2.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/GeeseGun.gd" type="Script" id=4]
-
-
-
+[ext_resource path="res://Scenes/Bullets/PearBullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Shoot",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Shoot",
 "speed": 5.0
 } ]
 
@@ -52,7 +50,9 @@ shape = SubResource( 3 )
 
 [node name="Gun" parent="." index="4"]
 script = ExtResource( 4 )
-Bullet = null
+SHOOT_TIMER = 3.0
+Bullet = ExtResource( 5 )
+SHOOT_DISTANCE = 800.0
 
 [node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
 position = Vector2( 1.01953, -30.9937 )

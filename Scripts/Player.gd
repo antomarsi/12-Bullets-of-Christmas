@@ -6,7 +6,7 @@ signal died
 
 var velocity = Vector2()
 onready var gunRoot = $Pivot/GunRoot
-onready var camera = global.currentScene.get_node("Player/Camera2D")
+onready var camera = global.get_current_scene().get_node("Player/Camera2D")
 onready var anim_sprite = $Pivot/Sprite
 
 
@@ -29,8 +29,8 @@ enum ANIM_STATE {
 var anim_state = null
 
 func _ready():
-	connect("shoot", global.currentScene, "_on_shoot")
-	connect("take_hit", global.currentScene, "_on_Player_take_hit")
+	connect("shoot", global.get_current_scene(), "_on_shoot")
+	connect("take_hit", global.get_current_scene(), "_on_Player_take_hit")
 	_set_state(ANIM_STATE.IDLE)
 	pass
 
@@ -99,7 +99,7 @@ func die():
 	emit_signal("died")
 	var cam_pos = camera.global_position
 	camera.get_parent().remove_child(camera)
-	global.currentScene.add_child(camera)
+	global.get_current_scene().add_child(camera)
 	camera.global_position = cam_pos
 	queue_free()
 

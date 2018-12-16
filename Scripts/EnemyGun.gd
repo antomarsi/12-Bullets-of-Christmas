@@ -11,9 +11,9 @@ var guns
 func _ready():
 	randomize()
 	if has_gun:
-		get_parent().connect("shoot", global.currentScene, "_on_shoot")
+		get_parent().connect("shoot", global.get_current_scene(), "_on_shoot")
 		guns = $ShootPositions.get_children()
-		$ShootTimer.wait_time = SHOOT_TIMER + randi() % 3
+		$ShootTimer.wait_time = SHOOT_TIMER + rand_range(0, 5)
 		$ShootTimer.start()
 
 func aim(target):

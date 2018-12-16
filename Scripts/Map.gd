@@ -3,6 +3,7 @@ extends Node2D
 var health_ui = "GUI/TopView/Health/"
 
 export(String, FILE, "*.tscn") var next_world
+export(String, FILE, "*.tscn") var menu
 
 func _ready():
 	$GUI/Transition/AnimationPlayer.play("Fade_in")
@@ -26,6 +27,8 @@ func _on_Enemy_died():
 	$EnemyKillTimer.start(1)
 
 func _on_EnemyKillTimer_timeout():
-	print($Enemies.get_child_count())
 	if $Enemies.get_child_count() == 0:
 		_go_next_scene()
+
+func _on_Player_died():
+	pass # Replace with function body.

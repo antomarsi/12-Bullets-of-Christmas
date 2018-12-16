@@ -1,6 +1,6 @@
 extends "res://Scripts/Entity.gd"
 
-onready var camera = global.currentScene.get_node("Player/Camera2D")
+onready var camera = get_node("./Camera2D")
 export (float) var SHOOT_SPEED = 0.1
 
 var anim_state = null
@@ -65,7 +65,7 @@ func die():
 	emit_signal("died")
 	var cam_pos = camera.global_position
 	camera.get_parent().remove_child(camera)
-	global.currentScene.add_child(camera)
+	global.get_current_scene().add_child(camera)
 	camera.global_position = cam_pos
 	queue_free()
 

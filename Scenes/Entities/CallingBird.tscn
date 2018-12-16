@@ -26,13 +26,12 @@ radius = 21.5608
 
 [node name="CallingBird" index="0" instance=ExtResource( 1 )]
 SPEED = 100
-HEALTH = 20
+HEALTH = 5
 TRACK = 1
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -22 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -47,5 +46,7 @@ shape = SubResource( 3 )
 [node name="Gun" parent="." index="4"]
 SHOOT_TIMER = 2.0
 Bullet = ExtResource( 4 )
-SHOOT_DISTANCE = 600.0
+SHOOT_DISTANCE = 100.0
+
+[node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
 

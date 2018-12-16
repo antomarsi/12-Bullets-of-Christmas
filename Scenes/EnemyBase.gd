@@ -14,15 +14,15 @@ export (int) var HEALTH = 10
 export (bool) var MULTI_SHOOT = false
 
 var velocity = Vector2()
-onready var target = weakref(global.currentScene.get_node("Player"))
+onready var target = weakref(global.get_current_scene().get_node("Player"))
 onready var sprite = $Sprite
 var gun_point
 
 func _ready():
 	randomize()
 	initialize()
-	connect("died", global.currentScene, "_on_Enemy_died")
-	connect("shoot", global.currentScene, "_on_shoot")
+	connect("died", global.get_current_scene(), "_on_Enemy_died")
+	connect("shoot", global.get_current_scene(), "_on_shoot")
 	$GunTimer.wait_time = SHOOT_TIMER
 	$GunTimer.start()
 

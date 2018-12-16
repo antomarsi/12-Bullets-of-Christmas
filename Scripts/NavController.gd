@@ -2,7 +2,7 @@ extends Navigation2D
 
 signal path_update
 
-onready var player_ref = global.player_ref
+onready var player_ref = global.get_player_ref()
 
 
 func _on_PathUpdate_timeout():

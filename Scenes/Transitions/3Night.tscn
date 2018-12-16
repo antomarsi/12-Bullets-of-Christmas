@@ -1,11 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/pixelart.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Transitions/1Night.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa2.png" type="Texture" id=11]
+[ext_resource path="res://Music/Verses/Faixa3.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Environment" id=1]
 
@@ -89,7 +95,7 @@ adjustment_saturation = 1.0
 [sub_resource type="Animation" id=2]
 
 resource_name = "End"
-length = 6.0
+length = 8.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -135,19 +141,91 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5.5, 5.9 ),
+"times": PoolRealArray( 0, 7.7, 8.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimatedSprite:modulate")
+tracks/3/path = NodePath("Pear:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3.19501, 3.7 ),
+"times": PoolRealArray( 0, 5.39501, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7.8, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -80.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TD1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.2, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("TD2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4.3, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CB1:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 3.1, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CB2:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CB3:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.4, 4.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -189,9 +267,36 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-next_world = "res://Scenes/Levels/1Night.tscn"
+next_world = "res://Scenes/Levels/3Night.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -215,6 +320,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath("..")
@@ -251,10 +359,49 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
-position = Vector2( 514.901, 387.601 )
+[node name="Pear" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 299.434, 352.103 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="TD1" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 424.233, 352.103 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="TD2" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 509.377, 352.103 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 7 )
+animation = "default"
+playing = true
+
+[node name="CB1" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 569.064, 367.807 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="CB2" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 630.064, 366.807 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="CB3" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 693.064, 368.807 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
 animation = "default"
 playing = true
 
@@ -270,10 +417,13 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = 0.0
+stream = ExtResource( 12 )
+volume_db = -80.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false

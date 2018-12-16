@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GodotWildJam"
+config/name="12 Bullets of Christmas"
 run/main_scene="res://Scenes/Levels/Title.tscn"
 config/icon="res://icon.png"
 
@@ -82,4 +82,5 @@ click={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 0.129412, 0.0941176, 0.105882, 1 )
 environment/default_environment="res://default_env.tres"

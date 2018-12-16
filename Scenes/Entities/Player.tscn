@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/PlayerNew.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/idle1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/idle2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/idle3.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/running1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/running2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/running3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/running4.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/running5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/running1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/running2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/running3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/running4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/running5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/idle1.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/idle2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/idle3.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/GunController.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Bullets/PlayerBullet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Sprites/gun.png" type="Texture" id=12]
@@ -19,15 +19,15 @@
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "Running",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=2]
@@ -71,7 +71,7 @@ SPEED = 200
 ACCELERATION = 20
 DE_ACCELERATION = 15
 HEALTH = 10
-SHOOT_SPEED = 0.3
+SHOOT_SPEED = 0.2
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )

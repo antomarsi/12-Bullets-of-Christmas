@@ -7,7 +7,7 @@ var can_shoot = false
 var flip = false
 
 func _ready():
-	player.connect("shoot", global.currentScene, "_on_shoot")
+	player.connect("shoot", global.get_current_scene(), "_on_shoot")
 	$GunTimer.wait_time = player.SHOOT_SPEED
 	$GunTimer.start()
 	pass
