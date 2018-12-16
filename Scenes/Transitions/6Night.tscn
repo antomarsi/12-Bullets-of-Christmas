@@ -113,17 +113,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "On", "On", "On the", "On the first", "On the first day", "On the first day of", "On the first day of Christmas,", "On the first day of Christmas,
+"values": [ "On", "On", "On the", "On the 6th", "On the 6th day", "On the 6th day of", "On the 6th day of Christmas,", "On the 6th day of Christmas,
 
-my", "On the first day of Christmas,
+my", "On the 6th day of Christmas,
 
-my true", "On the first day of Christmas,
+my true", "On the 6th day of Christmas,
 
-my true love", "On the first day of Christmas,
+my true love", "On the 6th day of Christmas,
 
-my true love send", "On the first day of Christmas,
+my true love send", "On the 6th day of Christmas,
 
-my true love sent to", "On the first day of Christmas,
+my true love sent to", "On the 6th day of Christmas,
 
 my true love sent to me" ]
 }
@@ -399,7 +399,7 @@ position = Vector2( 87.9334, 333.767 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
 animation = "default"
-frame = 1
+frame = 3
 playing = true
 
 [node name="2" type="Node2D" parent="CanvasLayer"]

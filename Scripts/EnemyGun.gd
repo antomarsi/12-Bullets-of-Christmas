@@ -5,7 +5,7 @@ export (float) var SHOOT_TIMER = 1
 export (PackedScene) var Bullet
 export (float) var SHOOT_DISTANCE = 400
 onready var has_gun = $ShootPositions.get_child_count() > 0
-onready var target = global.player_ref
+onready var target = global.get_player_ref()
 var guns
 
 func _ready():

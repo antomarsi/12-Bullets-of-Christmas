@@ -111,17 +111,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "On", "On", "On the", "On the first", "On the first day", "On the first day of", "On the first day of Christmas,", "On the first day of Christmas,
+"values": [ "On", "On", "On the", "On the 5th", "On the 5th day", "On the 5th day of", "On the 5th day of Christmas,", "On the 5th day of Christmas,
 
-my", "On the first day of Christmas,
+my", "On the 5th day of Christmas,
 
-my true", "On the first day of Christmas,
+my true", "On the 5th day of Christmas,
 
-my true love", "On the first day of Christmas,
+my true love", "On the 5th day of Christmas,
 
-my true love send", "On the first day of Christmas,
+my true love send", "On the 5th day of Christmas,
 
-my true love sent to", "On the first day of Christmas,
+my true love sent to", "On the 5th day of Christmas,
 
 my true love sent to me" ]
 }
@@ -362,9 +362,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "On the first day of Christmas,
-
-my true love sent to me"
+text = "On the first day of Christmas,"
 align = 1
 uppercase = true
 percent_visible = 1.0
@@ -372,6 +370,7 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Pear" type="AnimatedSprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 87.9334, 333.767 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
@@ -381,6 +380,7 @@ playing = true
 
 [node name="Cb" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -255.442, -12.307 )
 
 [node name="Calling4" type="AnimatedSprite" parent="CanvasLayer/Cb"]
@@ -414,6 +414,7 @@ playing = true
 
 [node name="Hen" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -194.472, -12.307 )
 
 [node name="CB1" type="AnimatedSprite" parent="CanvasLayer/Hen"]
@@ -441,6 +442,7 @@ playing = true
 
 [node name="TD" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -152.882, 15.063 )
 
 [node name="TD1" type="AnimatedSprite" parent="CanvasLayer/TD"]
@@ -459,9 +461,9 @@ animation = "default"
 playing = true
 
 [node name="5GoldenRings" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 634.887, 387.101 )
+position = Vector2( 512.985, 856.537 )
 rotation = -1.5708
-scale = Vector2( 5, 5 )
+scale = Vector2( 15, 15 )
 texture = ExtResource( 14 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -475,14 +477,14 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
-volume_db = -80.0
+volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false

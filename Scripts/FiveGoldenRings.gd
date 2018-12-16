@@ -1,5 +1,5 @@
 extends "res://Scripts/Enemy.gd"
-onready var target = global.player_ref
+onready var target = global.get_player_ref()
 
 func spritedir_loop():
 	if target:

@@ -120,17 +120,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "On", "On", "On the", "On the first", "On the first day", "On the first day of", "On the first day of Christmas,", "On the first day of Christmas,
+"values": [ "On", "On", "On the", "On the 10th ", "On the 10th day", "On the 10th day of", "On the 10th day of Christmas,", "On the 10th day of Christmas,
 
-my", "On the first day of Christmas,
+my", "On the 10th day of Christmas,
 
-my true", "On the first day of Christmas,
+my true", "On the 10th day of Christmas,
 
-my true love", "On the first day of Christmas,
+my true love", "On the 10th day of Christmas,
 
-my true love send", "On the first day of Christmas,
+my true love send", "On the 10th day of Christmas,
 
-my true love sent to", "On the first day of Christmas,
+my true love sent to", "On the 10th day of Christmas,
 
 my true love sent to me" ]
 }

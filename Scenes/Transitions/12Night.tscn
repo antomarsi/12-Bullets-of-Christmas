@@ -124,17 +124,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "On", "On", "On the", "On the first", "On the first day", "On the first day of", "On the first day of Christmas,", "On the first day of Christmas,
+"values": [ "On", "On", "On the", "On the 12th", "On the 12th day", "On the 12th day of", "On the 12th day of Christmas,", "On the 12th day of Christmas,
 
-my", "On the first day of Christmas,
+my", "On the 12th day of Christmas,
 
-my true", "On the first day of Christmas,
+my true", "On the 12th day of Christmas,
 
-my true love", "On the first day of Christmas,
+my true love", "On the 12th day of Christmas,
 
-my true love send", "On the first day of Christmas,
+my true love send", "On the 12th day of Christmas,
 
-my true love sent to", "On the first day of Christmas,
+my true love sent to", "On the 12th day of Christmas,
 
 my true love sent to me" ]
 }
@@ -314,6 +314,18 @@ tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
 "times": PoolRealArray( 0, 4.4, 5.03386 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("12:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 3, 4.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -501,7 +513,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "On the first day of Christmas,
+text = "On the 12th day of Christmas,
 
 my true love sent to me"
 align = 1
@@ -511,6 +523,7 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="1" type="AnimatedSprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 87.9334, 333.767 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
@@ -520,6 +533,7 @@ playing = true
 
 [node name="2" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -255.442, -12.307 )
 __meta__ = {
 "_edit_group_": true
@@ -558,6 +572,7 @@ playing = true
 
 [node name="3" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -194.472, -12.307 )
 __meta__ = {
 "_edit_group_": true
@@ -587,6 +602,7 @@ playing = true
 
 [node name="4" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -152.882, 15.063 )
 __meta__ = {
 "_edit_group_": true
@@ -609,6 +625,7 @@ playing = true
 
 [node name="6" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 796.227, 350.895 )
 __meta__ = {
 "_edit_group_": true
@@ -663,6 +680,7 @@ playing = true
 
 [node name="7" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.142858 )
 position = Vector2( 94.3117, 475.855 )
 scale = Vector2( 1.5, 1.5 )
 __meta__ = {
@@ -716,6 +734,9 @@ editor/display_folded = true
 position = Vector2( 362.581, 492.306 )
 rotation = 2.27374e-013
 scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/8"]
 frames = SubResource( 12 )
@@ -1060,9 +1081,9 @@ frame = 1
 playing = true
 
 [node name="5" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 634.887, 387.101 )
+position = Vector2( 512.985, 856.537 )
 rotation = -1.5708
-scale = Vector2( 5, 5 )
+scale = Vector2( 15, 15 )
 texture = ExtResource( 27 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]

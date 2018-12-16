@@ -9,6 +9,10 @@ func _ready():
 	$GUI/Transition/AnimationPlayer.play("Fade_in")
 	pass
 
+func _process(delta):
+	if Input.is_key_pressed(KEY_F12):
+		_go_next_scene()
+
 func _on_shoot(bullet, _position, _direction):
 	var b = bullet.instance()
 	add_child(b)
