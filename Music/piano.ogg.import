@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/piano.ogg-4711d074d7df0e4d2e256ae6a413364a.oggstr"
+path="res://.import/piano.ogg-602f57d4990192de77ef3342b8d9390c.oggstr"
 
 [deps]
 
-source_file="res://Music/piano.ogg"
-dest_files=[ "res://.import/piano.ogg-4711d074d7df0e4d2e256ae6a413364a.oggstr" ]
+source_file="res://music/piano.ogg"
+dest_files=[ "res://.import/piano.ogg-602f57d4990192de77ef3342b8d9390c.oggstr" ]
 
 [params]
 

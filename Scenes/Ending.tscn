@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/pixelart.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Label.gd" type="Script" id=2]
-[ext_resource path="res://Music/piano.ogg" type="AudioStream" id=3]
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interface/TextManager.gd" type="Script" id=2]
+[ext_resource path="res://music/piano.ogg" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 

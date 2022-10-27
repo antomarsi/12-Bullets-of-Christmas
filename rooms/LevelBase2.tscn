@@ -1,0 +1,265 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://rooms/BaseRoom.gd" type="Script" id=1]
+[ext_resource path="res://interface/health_bar/life-4.png" type="Texture" id=2]
+[ext_resource path="res://interface/health_bar/life-2.png" type="Texture" id=3]
+[ext_resource path="res://interface/health_bar/life-loop2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/vignette-1920-x-1080.png" type="Texture" id=5]
+[ext_resource path="res://interface/health_bar/life-loop1.png" type="Texture" id=6]
+[ext_resource path="res://interface/health_bar/life-1.png" type="Texture" id=7]
+[ext_resource path="res://music/guitar_loop_150bpm.ogg" type="AudioStream" id=8]
+[ext_resource path="res://music/drum_loop_150bpm.ogg" type="AudioStream" id=9]
+[ext_resource path="res://interface/health_bar/life-last.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Transitions/shards.png" type="Texture" id=11]
+[ext_resource path="res://interface/health_bar/life-3.png" type="Texture" id=12]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=13]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float cutoff : hint_range(0, 1.0);
+uniform float smooth_size : hint_range(0.0, 0.1);
+uniform sampler2D mask : hint_albedo;
+
+void fragment()
+{
+	float value = texture(mask, UV).r;
+	float alpha = smoothstep(cutoff, cutoff + smooth_size, value * (1.0 - smooth_size) + smooth_size);
+	COLOR = vec4(COLOR.rgb, alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/cutoff = 0.0
+shader_param/smooth_size = 0.1
+shader_param/mask = ExtResource( 11 )
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -4.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Music2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -4.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -4.0, -80.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Music2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -4.0, -80.0 ]
+}
+
+[node name="BaseRoom" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+modulate = Color( 1, 1, 1, 0.513726 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TopView" type="MarginContainer" parent="GUI"]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 20.0
+
+[node name="Health" type="Control" parent="GUI/TopView"]
+margin_right = 1004.0
+
+[node name="1" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 10.0
+margin_top = 28.0
+margin_right = 41.0
+margin_bottom = 52.0
+texture = ExtResource( 7 )
+stretch_mode = 3
+
+[node name="2" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = -7.0
+margin_top = 17.0
+margin_right = 31.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+
+[node name="3" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = -7.0
+margin_top = -1.0
+margin_right = 31.0
+margin_bottom = 32.0
+texture = ExtResource( 12 )
+stretch_mode = 3
+
+[node name="4" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 18.0
+margin_top = -1.0
+margin_right = 57.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="5" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 38.0
+margin_top = -1.0
+margin_right = 77.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="6" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 62.0
+margin_top = -1.0
+margin_right = 105.0
+margin_bottom = 32.0
+texture = ExtResource( 6 )
+stretch_mode = 3
+
+[node name="7" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 86.0
+margin_top = -1.0
+margin_right = 125.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="8" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 110.0
+margin_top = -1.0
+margin_right = 153.0
+margin_bottom = 32.0
+texture = ExtResource( 6 )
+stretch_mode = 3
+
+[node name="9" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 134.0
+margin_top = -1.0
+margin_right = 173.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="10" type="TextureRect" parent="GUI/TopView/Health"]
+margin_left = 156.0
+margin_top = -1.0
+margin_right = 195.0
+margin_bottom = 32.0
+texture = ExtResource( 10 )
+stretch_mode = 3
+
+[node name="Particles2D" type="Particles2D" parent="GUI/TopView/Health"]
+emitting = false
+process_material = SubResource( 1 )
+
+[node name="Transition" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="GUI/Transition"]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Transition"]
+anims/Fade_in = SubResource( 4 )
+anims/Fade_out = SubResource( 5 )
+
+[node name="EnemyKillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -4.0
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -4.0
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource( 13 )]
+
+[node name="Enemies2" type="YSort" parent="."]
+
+[node name="Walls" type="TileMap" parent="."]
+format = 1
+
+[node name="Floors" type="TileMap" parent="."]
+format = 1
+
+[connection signal="timeout" from="EnemyKillTimer" to="." method="_on_EnemyKillTimer_timeout"]

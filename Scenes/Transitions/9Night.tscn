@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Transitions/Night.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/pixelart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture" id=5]
@@ -21,8 +21,8 @@
 [ext_resource path="res://Sprites/Enemies/maid_a_milking2.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/Enemies/lady_dancing1.png" type="Texture" id=20]
 [ext_resource path="res://Sprites/Enemies/lady_dancing2.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Enemies/FiveGoldRings.png" type="Texture" id=22]
-[ext_resource path="res://Music/Verses/Faixa9.ogg" type="AudioStream" id=23]
+[ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture" id=22]
+[ext_resource path="res://music/Verses/Faixa9.ogg" type="AudioStream" id=23]
 
 [sub_resource type="Environment" id=1]
 

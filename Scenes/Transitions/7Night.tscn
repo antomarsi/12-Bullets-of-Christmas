@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Transitions/Night.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/pixelart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture" id=5]
@@ -17,8 +17,8 @@
 [ext_resource path="res://Sprites/Enemies/geese_a_laying2.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/Enemies/Cisne-Nadando1.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/Enemies/Cisne-Nadando2.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Enemies/FiveGoldRings.png" type="Texture" id=18]
-[ext_resource path="res://Music/Verses/Faixa7.ogg" type="AudioStream" id=19]
+[ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture" id=18]
+[ext_resource path="res://music/Verses/Faixa7.ogg" type="AudioStream" id=19]
 
 [sub_resource type="Environment" id=1]
 

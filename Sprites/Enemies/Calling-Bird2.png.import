@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/Calling-Bird2.png-78952294ccb3d102200a84f5ca5c55e3.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
@@ -25,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

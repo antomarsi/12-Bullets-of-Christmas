@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://mobs/Mob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mobs/ladies_dancing/LadiesDancing.png" type="Texture" id=2]
+[ext_resource path="res://mobs/ladies_dancing/LadiesDancing.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 37.3677 )
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 351.794
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 350.423
+
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 15.3599
+height = 57.0504
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="LadiesDancing" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+attack_speed = 1200.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, 0.347252 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource( 12 )
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 2 )
+
+[node name="HurtBox" type="Area2D" parent="." index="9"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 13 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="10"]
+autoplay = "idle"
+anims/RESET = SubResource( 8 )
+anims/idle = SubResource( 7 )

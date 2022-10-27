@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/12_day_of_christmas.ogg-22adf335c4dbfdded52b579dbbd99fbe.oggstr"
+path="res://.import/12_day_of_christmas.ogg-2a37c54cc1df0e0525bddd6539fb2132.oggstr"
 
 [deps]
 
-source_file="res://Music/12_day_of_christmas.ogg"
-dest_files=[ "res://.import/12_day_of_christmas.ogg-22adf335c4dbfdded52b579dbbd99fbe.oggstr" ]
+source_file="res://music/12_day_of_christmas.ogg"
+dest_files=[ "res://.import/12_day_of_christmas.ogg-2a37c54cc1df0e0525bddd6539fb2132.oggstr" ]
 
 [params]
 

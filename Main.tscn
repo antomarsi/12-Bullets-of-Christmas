@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://music/piano.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Sprites/title.png" type="Texture" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 12.6652
+margin_top = 376.674
+margin_right = 216.665
+margin_bottom = 583.674
+custom_fonts/font = SubResource( 3 )
+text = "Code by
+Antonio M.
+
+Art by
+Antonio M.
+Diogo da Silva
+
+Music By:
+Music Mike
+BrandoSanz"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -4.0
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = -0.28125
+anchor_top = -0.0998871
+anchor_right = 0.280273
+anchor_bottom = -0.0998871
+margin_left = 422.0
+margin_top = 135.0
+margin_right = 602.0
+margin_bottom = 391.0
+rect_min_size = Vector2( 180, 256 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_left = 422.0
+margin_top = 395.0
+margin_right = 602.0
+margin_bottom = 464.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Start" type="Button" parent="Buttons"]
+margin_right = 180.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "START"
+
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 45.0
+margin_right = 180.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 2 )
+text = "Quit"

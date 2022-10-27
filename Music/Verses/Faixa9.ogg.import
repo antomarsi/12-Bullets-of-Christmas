@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Faixa9.ogg-e1432ba4f1c7863aa27f0b9b452c8d93.oggstr"
+path="res://.import/Faixa9.ogg-7f37b1d1f4dd323903f490d4f3ac3026.oggstr"
 
 [deps]
 
-source_file="res://Music/Verses/Faixa9.ogg"
-dest_files=[ "res://.import/Faixa9.ogg-e1432ba4f1c7863aa27f0b9b452c8d93.oggstr" ]
+source_file="res://music/Verses/Faixa9.ogg"
+dest_files=[ "res://.import/Faixa9.ogg-7f37b1d1f4dd323903f490d4f3ac3026.oggstr" ]
 
 [params]
 

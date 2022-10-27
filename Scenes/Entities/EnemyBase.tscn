@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Sound/EnemyHit.wav" type="AudioStream" id=3]
+[ext_resource path="res://mobs/EnemyHit.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/EnemyGun.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Bullets/BulletBase.tscn" type="PackedScene" id=5]
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://mobs/Mob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mobs/lords_a_leaping/LordsALeaping.png" type="Texture" id=2]
+[ext_resource path="res://mobs/lords_a_leaping/LordsALeaping.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 17.325
+height = 34.2704
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.8654, 25.2706 )
+
+[node name="LordsALeaping" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+attack_speed = 800.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="9"]
+enabled = true
+cast_to = Vector2( 300, 50 )
+collision_mask = 19
+
+[node name="HurtBox" type="Area2D" parent="." index="10"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0.0814514, -12.7572 )
+shape = SubResource( 1 )

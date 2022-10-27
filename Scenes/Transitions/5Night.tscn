@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Transitions/Night.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/pixelart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture" id=5]
@@ -13,8 +13,8 @@
 [ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b2.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o2.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o1.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Enemies/FiveGoldRings.png" type="Texture" id=14]
-[ext_resource path="res://Music/Verses/Faixa5.ogg" type="AudioStream" id=15]
+[ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture" id=14]
+[ext_resource path="res://music/Verses/Faixa5.ogg" type="AudioStream" id=15]
 
 [sub_resource type="Environment" id=1]
 
