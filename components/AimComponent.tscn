@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dot4egry0jvov"]
+
+[ext_resource type="Script" path="res://components/AimComponent.gd" id="1_2tf22"]
+
+[node name="AimComponent" type="Node2D"]
+script = ExtResource("1_2tf22")
+
+[node name="AimPivot" type="Marker2D" parent="."]
+
+[node name="ShootingPoint" type="Marker2D" parent="AimPivot"]
+position = Vector2(24, -3)

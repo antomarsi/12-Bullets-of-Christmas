@@ -2,9 +2,9 @@ class_name BaseRoom
 extends Node2D
 
 const TILE := 16
-const FLOOR_TILES := [Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 0), Vector2i(5, 1), Vector2i(0, 1)]
-const WALL_TOPS := [Vector2i(2, 0), Vector2i(3, 0)]
-const WALL_FACES := [Vector2i(2, 1), Vector2i(3, 1)]
+const FLOOR_TILES := [Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4)]
+const WALL_TOPS := [Vector2i(2, 0), Vector2i(3, 0), Vector2i(2, 1), Vector2i(3, 1)]
+const WALL_FACES := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 
 # night > 0: waves come from NightData via a WaveDirector. night == 0: legacy test rooms
 # with mobs placed by hand under Mobs.

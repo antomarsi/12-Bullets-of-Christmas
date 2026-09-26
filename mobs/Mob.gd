@@ -42,6 +42,8 @@ var _drag_factor := 6.0
 # The animation player.
 @onready var _animation_player := $AnimationPlayer
 
+var _hurtbox_area: Area2D = null
+
 
 @export var always_aware := true
 
@@ -49,6 +51,7 @@ func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	if always_aware:
 		_target = get_tree().get_first_node_in_group("player")
+	_ensure_hurtbox_reach()
 	# This area detects when the player gets in range of the mob. Use it to play
 	# "wake-up" style animations, or get the mob to track the player.
 	_detection_area.connect("body_entered", Callable(self, "_on_DetectionArea_body_entered"))
@@ -64,6 +67,34 @@ func _ready() -> void:
 	# _sprite_alert is when the player is in view. We start out with it invisible.
 	_sprite_alert.visible = false
 	
+# Contact-damage mobs have a HurtBox; it must reach past the body, otherwise the body collides with
+# the player first and the hurtbox never overlaps it (the doves and rings could not hurt anyone).
+func _ensure_hurtbox_reach() -> void:
+	var hurt := get_node_or_null("HurtBox")
+	_hurtbox_area = hurt as Area2D
+	var body_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if hurt == null or body_shape == null or body_shape.shape == null:
+		return
+	var body_rect := body_shape.shape.get_rect()
+	var reach := maxf(body_rect.size.x, body_rect.size.y) * 0.5 + 12.0
+	for child in hurt.get_children():
+		if child is CollisionShape2D and child.shape != null:
+			var rect: Rect2 = child.shape.get_rect()
+			if maxf(rect.size.x, rect.size.y) * 0.5 < reach:
+				var circle := CircleShape2D.new()
+				circle.radius = reach
+				child.shape = circle
+				child.position = body_shape.position
+
+# Contact damage keeps applying while the player stays inside the HurtBox (the player's
+# blinking invincibility after a hit stops it from draining health every frame).
+func _process(_delta: float) -> void:
+	if _hurtbox_area == null or health <= 0:
+		return
+	for body in _hurtbox_area.get_overlapping_bodies():
+		if body is Player:
+			body.take_damage(damage)
+
 func is_ready_to_attack() -> bool:
 	return (
 		_target

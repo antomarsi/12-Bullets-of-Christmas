@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mobs/Mob.gd" id="1"]
 [ext_resource type="Texture2D" path="res://mobs/partridge_pear_tree.png" id="2"]
-[ext_resource type="AudioStream" path="res://scenes/player/PlayerHit.wav" id="3"]
+[ext_resource type="AudioStream" path="res://player/PlayerHit.wav" id="3"]
 [ext_resource type="AudioStream" path="res://mobs/EnemyHit.wav" id="4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]

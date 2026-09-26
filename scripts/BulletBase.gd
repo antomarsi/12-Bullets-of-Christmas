@@ -50,6 +50,10 @@ func _hit_area(area) -> void:
 	if area is HitboxComponent and not area.get_parent().has_method("take_damage"):
 		area.damage(damage)
 
+# A rolling (or blinking) player cannot be hit, so bullets fly straight through instead of vanishing.
+func _passes_through(target) -> bool:
+	return target != null and target.has_method("is_invulnerable") and target.is_invulnerable()
+
 func _destroy() -> void:
 	queue_free()
 
@@ -58,14 +62,14 @@ func _disable() -> void:
 	set_deferred("monitoring", false)
 
 func _on_body_entered(body) -> void:
-	if _has_hit:
+	if _has_hit or _passes_through(body):
 		return
 	_has_hit = true
 	_hit_body(body)
 	_destroy()
 
 func _on_area_entered(area) -> void:
-	if _has_hit or not area is HitboxComponent:
+	if _has_hit or not area is HitboxComponent or _passes_through(area.get_parent()):
 		return
 	_has_hit = true
 	_hit_area(area)

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://60wum2evh78c"]
-
-[ext_resource type="Script" path="res://scripts/components/ShootComponent.gd" id="1_syjct"]
-
-[node name="ShootComponent" type="Node2D"]
-script = ExtResource("1_syjct")
-
-[node name="Cooldown" type="Timer" parent="."]
-one_shot = true

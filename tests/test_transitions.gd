@@ -13,7 +13,7 @@ func _initialize() -> void:
 	_start_night()
 
 func _start_night() -> void:
-	var packed: PackedScene = load("res://scenes/transitions/%dNight.tscn" % night)
+	var packed: PackedScene = load("res://transitions/%dNight.tscn" % night)
 	scene = packed.instantiate()
 	scene._done = true  # don't leave the scene when the animation ends
 	root.get_node("Game").current_night = night
