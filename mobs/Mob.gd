@@ -1,16 +1,16 @@
 class_name Mob
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 # The damage this mob inflicts when it hits the player.
-export var damage := 1
+@export var damage := 1
 # How much damage the mob can take before dying.
-export var health := 2
+@export var health := 2
 # How far from the player this mob will orbit. The export hint in parentheses limits
 # The minimum and maximum orbit distance you can choose.
-export (float, 50.0, 400.0, 1.0) var orbit_distance := 200
+@export (float, 50.0, 400.0, 1.0) var orbit_distance := 200
 # Movement speed in pixels per second.
-export var speed := 250.0
+@export var speed := 250.0
 
 # This will be set if the robot is in view
 var _target: Player = null
@@ -24,38 +24,38 @@ var _drag_factor := 6.0
 # Detects when player is close
 
 
-onready var _detection_area := $DetectionArea
+@onready var _detection_area := $DetectionArea
 # Detects when player is within attack range; smaller than detection area.
-onready var _attack_area := $AttackArea
+@onready var _attack_area := $AttackArea
 # Plays a sound when the mob dies.
-onready var _die_sound := $DieSound
+@onready var _die_sound := $DieSound
 # Wind-up time just before attacking.
-onready var _before_attack_timer := $BeforeAttackTimer
+@onready var _before_attack_timer := $BeforeAttackTimer
 # Waiting time before attacking again.
-onready var _cooldown_timer := $CoolDownTimer
+@onready var _cooldown_timer := $CoolDownTimer
 # The enemy sprite itself. Unused in the base mob, but can be useful in
 # inherited mobs.
-onready var _sprite := $Sprite
+@onready var _sprite := $Sprite2D
 # Another sprite that is visible when the enemy is alerted. Can be a different
 # color, a "!" sign, anything.
-onready var _sprite_alert := $Sprite/Alert
+@onready var _sprite_alert := $Sprite2D/Alert
 # The animation player.
-onready var _animation_player := $AnimationPlayer
+@onready var _animation_player := $AnimationPlayer
 
 
 func _ready() -> void:
 	# This area detects when the player gets in range of the mob. Use it to play
 	# "wake-up" style animations, or get the mob to track the player.
-	_detection_area.connect("body_entered", self, "_on_DetectionArea_body_entered")
-	_detection_area.connect("body_exited", self, "_on_DetectionArea_body_exited")
+	_detection_area.connect("body_entered", Callable(self, "_on_DetectionArea_body_entered"))
+	_detection_area.connect("body_exited", Callable(self, "_on_DetectionArea_body_exited"))
 	# This is another area that detects when the player gets within attack range.
-	_attack_area.connect("body_entered", self, "_on_AttackArea_body_entered")
-	_attack_area.connect("body_exited", self, "_on_AttackArea_body_exited")
+	_attack_area.connect("body_entered", Callable(self, "_on_AttackArea_body_entered"))
+	_attack_area.connect("body_exited", Callable(self, "_on_AttackArea_body_exited"))
 	# We connect the die sound to call queue_free after it
-	_die_sound.connect("finished", self, "_on_DieSound_finished")
+	_die_sound.connect("finished", Callable(self, "_on_DieSound_finished"))
 	# There's a little wind up before attacking, and we attack once it times out.
-	_before_attack_timer.connect("timeout", self, "_on_BeforeAttackTimer_timeout")
-	_cooldown_timer.connect("timeout", self, "_on_CoolDownTimer_timeout")
+	_before_attack_timer.connect("timeout", Callable(self, "_on_BeforeAttackTimer_timeout"))
+	_cooldown_timer.connect("timeout", Callable(self, "_on_CoolDownTimer_timeout"))
 	# _sprite_alert is when the player is in view. We start out with it invisible.
 	_sprite_alert.visible = false
 	
@@ -70,7 +70,10 @@ func follow(target_global_position: Vector2) -> void:
 	var desired_velocity := global_position.direction_to(target_global_position) * speed
 	var steering := desired_velocity - _velocity
 	_velocity += steering / _drag_factor
-	_velocity = move_and_slide(_velocity, Vector2.ZERO)
+	set_velocity(_velocity)
+	set_up_direction(Vector2.ZERO)
+	move_and_slide()
+	_velocity = velocity
 
 func orbit_target() -> void:
 	if not _target:

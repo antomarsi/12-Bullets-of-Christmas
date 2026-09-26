@@ -1,9 +1,9 @@
 extends Control
 
-export var max_health := 8 setget set_max_health
-export var health := 8 setget set_health
+@export var max_health := 8: set = set_max_health
+@export var health := 8: set = set_health
 
-onready var array_health = [
+@onready var array_health = [
 	$"1",
 	$"2",
 	$"3",

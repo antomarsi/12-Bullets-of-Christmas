@@ -1,10 +1,10 @@
 extends Mob
 
-onready var _cannon := $Cannon
-onready var walk_anim := $AttackAnimation
+@onready var _cannon := $Cannon
+@onready var walk_anim := $AttackAnimation
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	walk_anim.play("idle")
 
 func _physics_process(delta: float) -> void:

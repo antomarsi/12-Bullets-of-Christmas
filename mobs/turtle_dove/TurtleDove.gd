@@ -2,20 +2,20 @@ extends Mob
 
 enum COLOR { RED, PURPLE, ORANGE, BLUE}
 
-export (COLOR) var selected_color
+@export (COLOR) var selected_color
 
-export var attack_speed := 1200.0
+@export var attack_speed := 1200.0
 
-onready var _walk_anim := $WalkAnimation
-onready var _hurtbox := $HurtBox
-onready var _collision_shape := $CollisionShape2D
-onready var _line_of_sight := $RayCast2D
+@onready var _walk_anim := $WalkAnimation
+@onready var _hurtbox := $HurtBox
+@onready var _collision_shape := $CollisionShape2D
+@onready var _line_of_sight := $RayCast2D
 
 var _is_in_attack_state := false
 var _charge_direction := Vector2()
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	match(selected_color):
 		COLOR.RED:
 			_walk_anim.play("walk_red")
@@ -25,7 +25,7 @@ func _ready() -> void:
 			_walk_anim.play("walk_orange")
 		COLOR.PURPLE:
 			_walk_anim.play("walk_blue")
-	_hurtbox.connect("body_entered", self, "_on_HurtBox_body_entered")
+	_hurtbox.connect("body_entered", Callable(self, "_on_HurtBox_body_entered"))
 
 func _on_DetectionArea_body_entered(body: Player) -> void:
 	_target = body
@@ -42,12 +42,14 @@ func _physics_process(delta: float) -> void:
 	if not _target:
 		return
 
-	_line_of_sight.cast_to = _target.global_position - global_position
+	_line_of_sight.target_position = _target.global_position - global_position
 	
 	if _target_within_range:
 		if _is_in_attack_state:
 			_velocity = attack_speed * _charge_direction
-			_velocity = move_and_slide(_velocity)
+			set_velocity(_velocity)
+			move_and_slide()
+			_velocity = velocity
 		else:
 			orbit_target()
 			_prepare_to_attack()

@@ -1,12 +1,12 @@
 extends Mob
 
-onready var _cannon := $Cannon
-onready var _anim := $WalkAnimation
+@onready var _cannon := $Cannon
+@onready var _anim := $WalkAnimation
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	_anim.play("idle")
-	_anim.connect("animation_finished", self, "_on_WalkAnimation_finished")
+	_anim.connect("animation_finished", Callable(self, "_on_WalkAnimation_finished"))
 
 func _physics_process(delta: float) -> void:
 	if not _target:

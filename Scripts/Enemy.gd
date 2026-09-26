@@ -7,15 +7,15 @@ enum FOLLOW_TYPE {\
 var path = []
 var stop = false
 
-export (FOLLOW_TYPE) var TRACK = FOLLOW_TYPE.FOLLOW
+@export (FOLLOW_TYPE) var TRACK = FOLLOW_TYPE.FOLLOW
 
 const DAMAGE = 1
 
 func _initialize():
-	._initialize()
+	super._initialize()
 	if TRACK == FOLLOW_TYPE.FOLLOW:
-		global.get_current_scene().get_node("nav").connect("path_update", self, "update_path")
-	connect("died", global.get_current_scene(), "_on_Enemy_died")
+		global.get_current_scene().get_node("nav").connect("path_update", Callable(self, "update_path"))
+	connect("died", Callable(global.get_current_scene(), "_on_Enemy_died"))
 
 func _physics_process(delta):
 	if TRACK == FOLLOW_TYPE.STATIC:
@@ -38,7 +38,7 @@ func go_to_path(delta):
 		var to_walk = delta * SPEED
 		var d = global_position.distance_to(path[0])
 		if d > 2:
-			global_position = global_position.linear_interpolate(path[0], (SPEED * delta)/d)
+			global_position = global_position.lerp(path[0], (SPEED * delta)/d)
 		else:
 			path.remove(0)
 	else:
@@ -49,7 +49,7 @@ func spritedir_loop():
 		return
 	if flip and (path[0] - global_position).x > 0:
 		flip = false
-		$Sprite.flip_h = !$Sprite.flip_h
+		$Sprite2D.flip_h = !$Sprite2D.flip_h
 	elif not flip and (path[0] - global_position).x < 0:
 		flip = true
-		$Sprite.flip_h = !$Sprite.flip_h
+		$Sprite2D.flip_h = !$Sprite2D.flip_h

@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource path="res://Scenes/Entities/Swan.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Enemies/lord_a_leaping1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Enemies/lord_a_leaping2.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Leap.gd" type="Script" id=4]
+[ext_resource type="PackedScene" path="res://Scenes/entities/Swan.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://gx8af3yl0uqq" path="res://Sprites/Enemies/lord_a_leaping1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://csubj6bg642uv" path="res://Sprites/Enemies/lord_a_leaping2.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/Leap.gd" id="4"]
 
 
 
@@ -41,7 +41,7 @@ extents = Vector2( 30.7892, 10 )
 [node name="Lord" index="0" instance=ExtResource( 1 )]
 SPEED = 400
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( -2.91988, -38.584 )
 scale = Vector2( 1, 1 )
 frames = SubResource( 1 )

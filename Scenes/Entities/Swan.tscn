@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource path="res://Scenes/Entities/TurtleDove.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Enemies/Cisne-Nadando1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Enemies/Cisne-Nadando2.png" type="Texture" id=3]
+[ext_resource type="PackedScene" path="res://Scenes/entities/TurtleDove.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bq6x67uujer4g" path="res://Sprites/Enemies/Cisne-Nadando1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://n5308fdv4sxb" path="res://Sprites/Enemies/Cisne-Nadando2.png" id="3"]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -16,7 +16,7 @@ animations = [ {
 [node name="Swan" index="0" instance=ExtResource( 1 )]
 SPEED = 250
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( 0, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )

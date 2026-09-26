@@ -8,4 +8,4 @@ func _physics_process(delta: float) -> void:
 
 func shoot() -> void:
 	_cooldown_timer.start()
-	.shoot()
+	super.shoot()

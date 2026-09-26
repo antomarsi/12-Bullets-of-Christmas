@@ -1,15 +1,15 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal shoot
 signal take_hit
 signal died
 
-export (int) var SPEED = 70
-export (int) var ACCELERATION = 10
-export (int) var DE_ACCELERATION = 15
-export (int) var HEALTH = 10
+@export (int) var SPEED = 70
+@export (int) var ACCELERATION = 10
+@export (int) var DE_ACCELERATION = 15
+@export (int) var HEALTH = 10
 
-onready var TYPE = global.ENTITY.ENEMY
+@onready var TYPE = global.ENTITY.ENEMY
 var HitStun = null
 
 var movedir = Vector2(0, 0)
@@ -23,11 +23,12 @@ func _ready():
 	pass
 
 func _initialize():
-	sprite = $Sprite
+	sprite = $Sprite2D
 	
 func _physics_process(delta):
 	if HitStun != null and HitStun.time_left > 0:
-		move_and_slide(knockdir.normalized() * SPEED * 1.5)
+		set_velocity(knockdir.normalized() * SPEED * 1.5)
+		move_and_slide()
 	else:
 		movement_loop(delta)
 
@@ -46,16 +47,18 @@ func movement_loop(delta):
 	if (dir.dot(hv) > 0):
 		accel = ACCELERATION
 
-	velocity = hv.linear_interpolate(new_pos, accel * delta)
-	velocity = move_and_slide(velocity)
+	velocity = hv.lerp(new_pos, accel * delta)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 func spritedir_loop():
 	if flip and movedir.x > 0:
 		flip = false
-		$Sprite.flip_h = flip
+		$Sprite2D.flip_h = flip
 	elif not flip and movedir.x < 0:
 		flip = true
-		$Sprite.flip_h = flip
+		$Sprite2D.flip_h = flip
 
 func take_damage(damage):
 	HEALTH -= damage

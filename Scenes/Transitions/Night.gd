@@ -1,6 +1,6 @@
 extends Node2D
 
-export(String, FILE, "*.tscn") var next_world
+@export var next_world # (String, FILE, "*.tscn")
 
 func _ready():
 	$CanvasLayer/AnimationPlayer.play("End")

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Poing.wav-0aaa29bef0780ba107336d85a66a0e25.sample"
+type="AudioStreamWAV"
+uid="uid://cr1f0g47wsscr"
+path="res://.godot/imported/Poing.wav-d809e044f9a6aeb720ba6221753db698.sample"
 
 [deps]
 
-source_file="res://music/Poing.wav"
-dest_files=[ "res://.import/Poing.wav-0aaa29bef0780ba107336d85a66a0e25.sample" ]
+source_file="res://Music/Poing.wav"
+dest_files=["res://.godot/imported/Poing.wav-d809e044f9a6aeb720ba6221753db698.sample"]
 
 [params]
 

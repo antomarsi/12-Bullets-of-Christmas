@@ -1,17 +1,17 @@
 extends Mob
 
-export var attack_speed := 1200.0
+@export var attack_speed := 1200.0
 
-onready var _walk_anim := $WalkAnimation
-onready var _hurtbox := $HurtBox
-onready var _collision_shape := $CollisionShape2D
+@onready var _walk_anim := $WalkAnimation
+@onready var _hurtbox := $HurtBox
+@onready var _collision_shape := $CollisionShape2D
 
 var _is_in_attack_state := false
 var _charge_direction := Vector2()
 
 func _ready() -> void:
-	._ready()
-	_hurtbox.connect("body_entered", self, "_on_HurtBox_body_entered")
+	super._ready()
+	_hurtbox.connect("body_entered", Callable(self, "_on_HurtBox_body_entered"))
 
 func _on_DetectionArea_body_entered(body: Player) -> void:
 	_target = body

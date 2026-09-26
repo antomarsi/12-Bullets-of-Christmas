@@ -1,18 +1,18 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Transitions/Night.gd" type="Script" id=1]
-[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b1.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o2.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o1.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa1.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa2.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Enemies/Calling-Bird1.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Enemies/Calling-Bird2.png" type="Texture" id=13]
+[ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
+[ext_resource path="res://Sprites/Enemies/partriadge1.png" type="Texture2D" id=3]
+[ext_resource path="res://Sprites/Enemies/partriadge2.png" type="Texture2D" id=4]
+[ext_resource path="res://Sprites/Enemies/partriadge3.png" type="Texture2D" id=5]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b1.png" type="Texture2D" id=6]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_b2.png" type="Texture2D" id=7]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o2.png" type="Texture2D" id=8]
+[ext_resource path="res://Sprites/Enemies/TD/Turtle_dove_o1.png" type="Texture2D" id=9]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa1.png" type="Texture2D" id=10]
+[ext_resource path="res://Sprites/Enemies/GalinhaFrancesa2.png" type="Texture2D" id=11]
+[ext_resource path="res://Sprites/Enemies/Calling-Bird1.png" type="Texture2D" id=12]
+[ext_resource path="res://Sprites/Enemies/Calling-Bird2.png" type="Texture2D" id=13]
 [ext_resource path="res://music/Verses/Faixa4.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Environment" id=1]
@@ -46,11 +46,11 @@ auto_exposure_scale = 0.4
 auto_exposure_min_luma = 0.05
 auto_exposure_max_luma = 8.0
 auto_exposure_speed = 0.5
-ss_reflections_enabled = false
-ss_reflections_max_steps = 64
-ss_reflections_fade_in = 0.15
-ss_reflections_fade_out = 2.0
-ss_reflections_depth_tolerance = 0.2
+ssr_enabled = false
+ssr_max_steps = 64
+ssr_fade_in = 0.15
+ssr_fade_out = 2.0
+ssr_depth_tolerance = 0.2
 ss_reflections_roughness = true
 ssao_enabled = false
 ssao_radius = 1.0
@@ -107,8 +107,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 1.4, 1.5, 1.6, 1.8, 2.1, 2.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "On", "On", "On the", "On the 4th", "On the 4th day", "On the 4th day of", "On the 4th day of Christmas,", "On the 4th day of Christmas,
 
@@ -131,8 +131,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -143,8 +143,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 9, 9.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9, 9.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
@@ -155,8 +155,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 9.1, 9.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9.1, 9.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -80.0 ]
 }
@@ -167,8 +167,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.0297282, 3.02973, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0.0297282, 3.02973, 3.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -179,8 +179,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 4.1, 4.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 4.1, 4.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -191,8 +191,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 5.5, 6.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 5.5, 6.1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -203,8 +203,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 6.9, 8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 6.9, 8 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -221,13 +221,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 
 size = 32
 outline_size = 0
@@ -300,8 +300,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -326,17 +326,17 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -512.0
-margin_top = 150.0
-margin_right = 511.0
-margin_bottom = 178.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+offset_left = -512.0
+offset_top = 150.0
+offset_right = 511.0
+offset_bottom = 178.0
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+theme_override_fonts/font = SubResource( 4 )
 text = "On the first day of Christmas,
 
 my true love sent to me"
@@ -346,7 +346,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Pear" type="AnimatedSprite" parent="CanvasLayer"]
+[node name="Pear" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2( 196.935, 346.074 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
@@ -356,7 +356,7 @@ playing = true
 [node name="TD" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
 
-[node name="TD1" type="AnimatedSprite" parent="CanvasLayer/TD"]
+[node name="TD1" type="AnimatedSprite2D" parent="CanvasLayer/TD"]
 position = Vector2( 321.734, 346.074 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 6 )
@@ -364,7 +364,7 @@ animation = "default"
 frame = 1
 playing = true
 
-[node name="TD2" type="AnimatedSprite" parent="CanvasLayer/TD"]
+[node name="TD2" type="AnimatedSprite2D" parent="CanvasLayer/TD"]
 position = Vector2( 366.374, 369.119 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 7 )
@@ -374,7 +374,7 @@ playing = true
 [node name="Hen" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
 
-[node name="CB1" type="AnimatedSprite" parent="CanvasLayer/Hen"]
+[node name="CB1" type="AnimatedSprite2D" parent="CanvasLayer/Hen"]
 position = Vector2( 484.722, 351.303 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
@@ -382,7 +382,7 @@ animation = "default"
 frame = 1
 playing = true
 
-[node name="CB2" type="AnimatedSprite" parent="CanvasLayer/Hen"]
+[node name="CB2" type="AnimatedSprite2D" parent="CanvasLayer/Hen"]
 position = Vector2( 519.883, 374.745 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
@@ -390,7 +390,7 @@ animation = "default"
 frame = 1
 playing = true
 
-[node name="CB3" type="AnimatedSprite" parent="CanvasLayer/Hen"]
+[node name="CB3" type="AnimatedSprite2D" parent="CanvasLayer/Hen"]
 position = Vector2( 553.553, 401.885 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
@@ -400,14 +400,14 @@ playing = true
 [node name="Cb" type="Node2D" parent="CanvasLayer"]
 editor/display_folded = true
 
-[node name="Calling4" type="AnimatedSprite" parent="CanvasLayer/Cb"]
+[node name="Calling4" type="AnimatedSprite2D" parent="CanvasLayer/Cb"]
 position = Vector2( 669.793, 354.186 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 animation = "default"
 playing = true
 
-[node name="Calling" type="AnimatedSprite" parent="CanvasLayer/Cb"]
+[node name="Calling" type="AnimatedSprite2D" parent="CanvasLayer/Cb"]
 position = Vector2( 688.047, 378.731 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
@@ -415,14 +415,14 @@ animation = "default"
 frame = 1
 playing = true
 
-[node name="Calling3" type="AnimatedSprite" parent="CanvasLayer/Cb"]
+[node name="Calling3" type="AnimatedSprite2D" parent="CanvasLayer/Cb"]
 position = Vector2( 712.535, 405.966 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 animation = "default"
 playing = true
 
-[node name="Calling2" type="AnimatedSprite" parent="CanvasLayer/Cb"]
+[node name="Calling2" type="AnimatedSprite2D" parent="CanvasLayer/Cb"]
 position = Vector2( 740.026, 431.697 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
@@ -434,8 +434,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

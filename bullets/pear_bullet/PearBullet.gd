@@ -1,12 +1,12 @@
 extends Bullet
 
 
-onready var _animation_player := $AnimationPlayer as AnimationPlayer
-onready var _particles := $Particles2D as Particles2D
+@onready var _animation_player := $AnimationPlayer as AnimationPlayer
+@onready var _particles := $GPUParticles2D as GPUParticles2D
 
 
 func _ready() -> void:
-	_animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	_animation_player.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 	_animation_player.play("spawn")
 
 

@@ -1,128 +1,137 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=3 uid="uid://cy65o6ns15k57"]
 
-[ext_resource path="res://player/PlayerDies.wav" type="AudioStream" id=1]
-[ext_resource path="res://player/player_sprites.png" type="Texture" id=2]
-[ext_resource path="res://player/Player.gd" type="Script" id=3]
-[ext_resource path="res://player/GunHolder.gd" type="Script" id=4]
-[ext_resource path="res://player/ShakingCamera.gd" type="Script" id=5]
-[ext_resource path="res://player/smoke.png" type="Texture" id=6]
-[ext_resource path="res://player/PlayerHit.wav" type="AudioStream" id=7]
-[ext_resource path="res://weapon/basic_gun/BasicGun.tscn" type="PackedScene" id=8]
+[ext_resource type="AudioStream" uid="uid://b3hdahy8fl7ou" path="res://Scenes/player/PlayerDies.wav" id="1"]
+[ext_resource type="Script" path="res://player/Player.gd" id="3"]
+[ext_resource type="Script" path="res://player/GunHolder.gd" id="4"]
+[ext_resource type="Script" path="res://player/ShakingCamera.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dk4cvctdl54a0" path="res://player/smoke.png" id="6"]
+[ext_resource type="AudioStream" uid="uid://dpnryh3eju0ch" path="res://Scenes/player/PlayerHit.wav" id="7"]
+[ext_resource type="PackedScene" uid="uid://cf3i2j4inrsc8" path="res://weapon/basic_gun/BasicGun.tscn" id="8"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="1"]
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="2"]
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="3"]
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="4"]
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="5"]
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="6"]
+region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="7"]
+region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 224, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="8"]
+region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}],
 "loop": true,
-"name": "idle",
+"name": &"idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}],
 "loop": true,
-"name": "running",
+"name": &"running",
 "speed": 10.0
-} ]
+}]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id="10"]
 radius = 7.84101
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id="11"]
 radius = 4.54948
 
-[sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0, 0.084, 0.172, 0.544, 0.873 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0, 0.780392, 0.831373, 0.882353, 1, 0.572549, 0.560784, 0.721569, 1, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="12"]
+offsets = PackedFloat32Array(0, 0.084, 0.172, 0.544, 0.873)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 0.780392, 0.831373, 0.882353, 1, 0.572549, 0.560784, 0.721569, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture2D" id="13"]
+gradient = SubResource("12")
 
-[sub_resource type="ParticlesMaterial" id=14]
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
+[sub_resource type="ParticleProcessMaterial" id="14"]
+direction = Vector3(0, -1, 0)
 spread = 20.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 0.5
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.5
-scale_random = 0.5
-color_ramp = SubResource( 13 )
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("13")
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 50
-script = ExtResource( 3 )
+script = ExtResource("3")
 speed = 400.0
 
-[node name="Skin" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -7.79536 )
-frames = SubResource( 9 )
-animation = "idle"
+[node name="Skin" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7.79536)
+sprite_frames = SubResource("9")
+animation = &"running"
 
 [node name="GunHolder" type="Area2D" parent="."]
 collision_mask = 0
 monitoring = false
-script = ExtResource( 4 )
-weapon_scene = ExtResource( 8 )
+script = ExtResource("4")
+weapon_scene = ExtResource("8")
 
-[node name="BulletSpawningPoint" type="Position2D" parent="GunHolder"]
-position = Vector2( 19.5681, 0 )
+[node name="BulletSpawningPoint" type="Marker2D" parent="GunHolder"]
+position = Vector2(19.5681, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunHolder"]
-position = Vector2( 0, -3.229 )
-shape = SubResource( 10 )
+position = Vector2(0, -3.229)
+shape = SubResource("10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3.568 )
-shape = SubResource( 11 )
+position = Vector2(0, 3.568)
+shape = SubResource("11")
 
-[node name="SmokeParticles" type="Particles2D" parent="."]
+[node name="SmokeParticles" type="GPUParticles2D" parent="."]
 show_behind_parent = true
-position = Vector2( 0, 6.90446 )
+position = Vector2(0, 6.90446)
 amount = 16
+process_material = SubResource("14")
+texture = ExtResource("6")
 lifetime = 0.8
-local_coords = false
-process_material = SubResource( 14 )
-texture = ExtResource( 6 )
 
 [node name="ShakingCamera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.75, 0.75 )
-script = ExtResource( 5 )
+zoom = Vector2(0.75, 0.75)
+script = ExtResource("5")
 
 [node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource("7")
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
+stream = ExtResource("1")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource path="res://mobs/Mob.tscn" type="PackedScene" id=1]
-[ext_resource path="res://mobs/partridge/Partridge.gd" type="Script" id=2]
-[ext_resource path="res://mobs/french_hen/french_hen.png" type="Texture" id=3]
-[ext_resource path="res://mobs/Cannon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://bullets/pear_bullet/PearBullet.tscn" type="PackedScene" id=5]
+[ext_resource type="PackedScene" path="res://mobs/Mob.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/entities/1-partridge/Partridge.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://b0ssa6gp6yn8l" path="res://mobs/french_hen/french_hen.png" id="3"]
+[ext_resource type="PackedScene" path="res://mobs/Cannon.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dywjeodixrfro" path="res://bullets/pear_bullet/PearBullet.tscn" id="5"]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 29.8583
@@ -13,26 +13,26 @@ height = 3.73322
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/path = NodePath("Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -42,14 +42,14 @@ resource_name = "idle"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -59,14 +59,14 @@ resource_name = "walk"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 1, 0 ]
 }
@@ -83,7 +83,7 @@ shape = SubResource( 1 )
 [node name="Cannon" parent="." index="3" instance=ExtResource( 4 )]
 BulletScene = ExtResource( 5 )
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite2D" parent="." index="4"]
 modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 3 )
 hframes = 2

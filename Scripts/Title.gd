@@ -1,6 +1,6 @@
 extends Control
 
-export(String, FILE, "*.tscn") var next_world
+@export var next_world # (String, FILE, "*.tscn")
 
 func _on_Start_pressed():
 	global.setScene(next_world)

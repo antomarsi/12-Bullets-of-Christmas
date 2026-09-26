@@ -1,19 +1,19 @@
 extends Node2D
 
-export (bool) var MULTISHOOT = false
-export (float) var SHOOT_TIMER = 1
-export (PackedScene) var Bullet
-export (float) var SHOOT_DISTANCE = 400
-onready var has_gun = $ShootPositions.get_child_count() > 0
-onready var target = global.get_player_ref()
+@export (bool) var MULTISHOOT = false
+@export (float) var SHOOT_TIMER = 1
+@export (PackedScene) var Bullet
+@export (float) var SHOOT_DISTANCE = 400
+@onready var has_gun = $ShootPositions.get_child_count() > 0
+@onready var target = global.get_player_ref()
 var guns
 
 func _ready():
 	randomize()
 	if has_gun:
-		get_parent().connect("shoot", global.get_current_scene(), "_on_shoot")
+		get_parent().connect("shoot", Callable(global.get_current_scene(), "_on_shoot"))
 		guns = $ShootPositions.get_children()
-		$ShootTimer.wait_time = SHOOT_TIMER + rand_range(0, 5)
+		$ShootTimer.wait_time = SHOOT_TIMER + randf_range(0, 5)
 		$ShootTimer.start()
 
 func aim(target):

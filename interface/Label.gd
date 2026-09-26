@@ -1,9 +1,9 @@
 extends Control
 
-export (PackedScene) var next_world
-export (float) var duration = 0.05
+@export (PackedScene) var next_world
+@export (float) var duration = 0.05
 
-onready var _anim_player := $AnimationPlayer
+@onready var _anim_player := $AnimationPlayer
 
 var lapsed = 0
 var letters = 0

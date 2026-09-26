@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://Scenes/Entities/EnemyBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Enemies/Calling-Bird1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Enemies/Calling-Bird2.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Bullets/PearBullet.tscn" type="PackedScene" id=4]
+[ext_resource type="PackedScene" path="res://Scenes/entities/EnemyBase.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5p6jg7blxw5f" path="res://Sprites/Enemies/Calling-Bird1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bbwh2wios62e6" path="res://Sprites/Enemies/Calling-Bird2.png" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/Bullets/PearBullet.tscn" id="4"]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -29,7 +29,7 @@ SPEED = 100
 HEALTH = 5
 TRACK = 1
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( 0, -22 )
 frames = SubResource( 1 )
 playing = true
@@ -48,5 +48,5 @@ SHOOT_TIMER = 2.0
 Bullet = ExtResource( 4 )
 SHOOT_DISTANCE = 100.0
 
-[node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
+[node name="Marker2D" type="Marker2D" parent="Gun/ShootPositions" index="0"]
 

@@ -1,9 +1,9 @@
 extends Mob
 
-onready var _cannon := $Cannon
+@onready var _cannon := $Cannon
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 
 func _physics_process(delta: float) -> void:
 	if not _target:

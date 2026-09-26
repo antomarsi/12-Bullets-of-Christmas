@@ -1,10 +1,10 @@
 extends Control
 
-export (PackedScene) var next_world
-export var speed = 30
+@export (PackedScene) var next_world
+@export var speed = 30
 
-onready var label_container = $CenterContainer2/VBoxContainer
-onready var timer = $Timer
+@onready var label_container = $CenterContainer2/VBoxContainer
+@onready var timer = $Timer
 
 func _ready():
 	for label in label_container.get_children():

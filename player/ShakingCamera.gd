@@ -1,9 +1,9 @@
 class_name ShakingCamera2D
 extends Camera2D
 
-export var max_amplitude := 16.0
+@export var max_amplitude := 16.0
 
-var shake_intensity := 0.0 setget set_shake_intensity
+var shake_intensity := 0.0: set = set_shake_intensity
 
 var _noise := preload("camera_noise.tres")
 
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	set_shake_intensity(shake_intensity - delta)
-	var time_elapsed := OS.get_ticks_msec() / 20.0
+	var time_elapsed := Time.get_ticks_msec() / 20.0
 	var random_direction := Vector2(
 		_noise.get_noise_2d(time_elapsed, time_elapsed * 3.0),
 		_noise.get_noise_2d(time_elapsed * 2.0, time_elapsed)

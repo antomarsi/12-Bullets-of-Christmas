@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://Scenes/Entities/EnemyBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/FiveGoldenRings.gd" type="Script" id=2]
-[ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/FiveGoldenGun.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Bullets/PearBullet.tscn" type="PackedScene" id=5]
+[ext_resource type="PackedScene" path="res://Scenes/entities/EnemyBase.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/FiveGoldenRings.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c8gy505uexw2q" path="res://mobs/five_golden_rings/FiveGoldRings.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/FiveGoldenGun.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Scenes/Bullets/PearBullet.tscn" id="5"]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -24,7 +24,7 @@ radius = 41.4437
 script = ExtResource( 2 )
 SPEED = 200
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2( 0, 0 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
@@ -41,9 +41,9 @@ script = ExtResource( 4 )
 MULTISHOOT = true
 Bullet = ExtResource( 5 )
 
-[node name="Position2D" type="Position2D" parent="Gun/ShootPositions" index="0"]
+[node name="Marker2D" type="Marker2D" parent="Gun/ShootPositions" index="0"]
 position = Vector2( 41.4209, -25.5271 )
 
-[node name="Position2D2" type="Position2D" parent="Gun/ShootPositions" index="1"]
+[node name="Position2D2" type="Marker2D" parent="Gun/ShootPositions" index="1"]
 position = Vector2( 41.3088, 31.0617 )
 

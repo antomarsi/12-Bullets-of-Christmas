@@ -1,9 +1,9 @@
 extends Control
 
-onready var _health_bar := $container/HealthBar
+@onready var _health_bar := $container/HealthBar
 
 func _ready() -> void:
-	Events.connect("player_health_changed", self, "_on_player_health_changed")
+	Events.connect("player_health_changed", Callable(self, "_on_player_health_changed"))
 	
 func _on_player_health_changed(health: int) -> void:
 	_health_bar.health = health

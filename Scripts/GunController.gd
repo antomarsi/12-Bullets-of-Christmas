@@ -1,13 +1,13 @@
-extends Position2D
-onready var player = get_parent()
+extends Marker2D
+@onready var player = get_parent()
 
-export (PackedScene) var Bullet
+@export (PackedScene) var Bullet
 
 var can_shoot = false
 var flip = false
 
 func _ready():
-	player.connect("shoot", global.get_current_scene(), "_on_shoot")
+	player.connect("shoot", Callable(global.get_current_scene(), "_on_shoot"))
 	$GunTimer.wait_time = player.SHOOT_SPEED
 	$GunTimer.start()
 	pass

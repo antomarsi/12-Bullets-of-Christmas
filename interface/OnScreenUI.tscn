@@ -11,13 +11,13 @@ script = ExtResource( 2 )
 [node name="container" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = 30.0
-margin_right = -30.0
-margin_bottom = -30.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
 
 [node name="HealthBar" parent="container" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 964.0
-margin_bottom = 540.0
+offset_right = 964.0
+offset_bottom = 540.0
