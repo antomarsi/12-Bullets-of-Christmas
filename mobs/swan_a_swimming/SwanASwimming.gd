@@ -1,7 +1,7 @@
 extends Mob
 
 @onready var _cannon := $Cannon
-@onready var walk_anim := $AttackAnimation
+@onready var walk_anim := $WalkAnimation
 
 func _ready() -> void:
 	super._ready()

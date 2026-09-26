@@ -1,14 +1,12 @@
-class_name Player
 extends CharacterBody2D
 
 @export var max_health := 5
 
 @export var speed := 650.0
 
-@export (float, 0.01, 1.0) var drag_factor := 0.12
+@export_range(0.01, 1.0) var drag_factor := 0.12
 
 var health := max_health: set = set_health
-var velocity := Vector2.ZERO
 
 @onready var _camera := $ShakingCamera2D
 @onready var _damage_audio = $DamageAudio
@@ -18,6 +16,7 @@ var velocity := Vector2.ZERO
 @onready var _gun_holder := $GunHolder
 
 func _ready() -> void:
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	# ON DEATH
 	_death_audio.connect("finished", Callable(get_tree(), "change_scene_to_file").bind("res://interface/GameOver.tscn"))
 
@@ -28,7 +27,6 @@ func _physics_process(delta: float) -> void:
 	var steering := desired_velocity - velocity
 	velocity += steering * drag_factor
 	set_velocity(velocity)
-	set_up_direction(Vector2.ZERO)
 	move_and_slide()
 	velocity = velocity
 	

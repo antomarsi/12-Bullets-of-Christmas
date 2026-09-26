@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://djr5m8oydkgv2" path="res://weapon/Weapon.tscn" id="1"]
 [ext_resource type="Script" path="res://weapon/basic_gun/BasicGun.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://cvxaqwm5b62d2" path="res://Scenes/bullets/BasicBullet.tscn" id="3_yf760"]
+[ext_resource type="PackedScene" uid="uid://cvxaqwm5b62d2" path="res://scenes/bullets/BasicBullet.tscn" id="3_yf760"]
 
 [node name="Weapon" instance=ExtResource("1")]
 script = ExtResource("2")

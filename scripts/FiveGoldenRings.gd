@@ -1,0 +1,7 @@
+extends "res://scripts/Enemy.gd"
+@onready var target = global.get_player_ref()
+
+func spritedir_loop():
+	if target:
+		$Sprite2D.look_at(target.get_ref().global_position)
+		$Gun.look_at(target.get_ref().global_position)

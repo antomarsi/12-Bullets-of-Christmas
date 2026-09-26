@@ -7,6 +7,7 @@ extends Node2D
 var enemies = []
 
 func _ready() -> void:
+	Events.last_room = get_tree().current_scene.scene_file_path
 	enemies = enemies_holder.get_children()
 	Events.connect("mob_died", Callable(self, "_on_mob_died"))
 
@@ -15,4 +16,7 @@ func _on_mob_died(mob) -> void:
 	print("Now has %d enemies" % enemies.size())
 	
 	if enemies.size() == 0:
-		get_tree().change_scene_to_packed(next_stage)
+		if next_stage:
+			get_tree().change_scene_to_packed.call_deferred(next_stage)
+		else:
+			get_tree().change_scene_to_file.call_deferred("res://Main.tscn")

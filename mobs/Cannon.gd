@@ -9,7 +9,7 @@ enum CollisionMask {
 
 @export var BulletScene: PackedScene
 
-@export (CollisionMask) var collision_mask := CollisionMask.PLAYER
+@export var collision_mask: CollisionMask = CollisionMask.PLAYER
 
 # Maximum random angle applied to the shot bullets in degrees. Controls the
 # cannon's precision.
@@ -24,7 +24,7 @@ enum CollisionMask {
 
 func shoot_at_target(target: Node2D) -> void:
 	look_at(target.global_position)
-	var bullet: Bullet = BulletScene.instantiate()
+	var bullet: BulletBase = BulletScene.instantiate()
 	bullet.global_transform = _position_2d.global_transform
 	bullet.max_range = max_range
 	bullet.speed = bullet_speed

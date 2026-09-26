@@ -2,7 +2,6 @@ extends Mob
 
 @export var attack_speed := 1200.0
 
-@onready var _walk_anim := $WalkAnimation
 @onready var _hurtbox := $HurtBox
 @onready var _collision_shape := $CollisionShape2D
 

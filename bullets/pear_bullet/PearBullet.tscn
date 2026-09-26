@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://dywjeodixrfro"]
 
-[ext_resource type="Script" path="res://Scenes/bullets/BasicBullet.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/bullets/BasicBullet.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://n44xdrhjx8bo" path="res://bullets/pear_bullet/pear.png" id="2"]
-[ext_resource type="AudioStream" uid="uid://duywtmwch6pao" path="res://Scenes/player/Shoot.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://duywtmwch6pao" path="res://scenes/player/Shoot.wav" id="3"]
 [ext_resource type="Script" path="res://props/RandomAudioPlayer2D.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://nm0fxqfeqicv" path="res://bullets/particle_bullet.png" id="5"]
 

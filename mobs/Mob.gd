@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var health := 2
 # How far from the player this mob will orbit. The export hint in parentheses limits
 # The minimum and maximum orbit distance you can choose.
-@export (float, 50.0, 400.0, 1.0) var orbit_distance := 200
+@export_range(50.0, 400.0, 1.0) var orbit_distance := 200.0
 # Movement speed in pixels per second.
 @export var speed := 250.0
 
@@ -44,6 +44,7 @@ var _drag_factor := 6.0
 
 
 func _ready() -> void:
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	# This area detects when the player gets in range of the mob. Use it to play
 	# "wake-up" style animations, or get the mob to track the player.
 	_detection_area.connect("body_entered", Callable(self, "_on_DetectionArea_body_entered"))
@@ -71,7 +72,6 @@ func follow(target_global_position: Vector2) -> void:
 	var steering := desired_velocity - _velocity
 	_velocity += steering / _drag_factor
 	set_velocity(_velocity)
-	set_up_direction(Vector2.ZERO)
 	move_and_slide()
 	_velocity = velocity
 

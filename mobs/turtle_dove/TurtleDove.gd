@@ -2,7 +2,7 @@ extends Mob
 
 enum COLOR { RED, PURPLE, ORANGE, BLUE}
 
-@export (COLOR) var selected_color
+@export var selected_color: COLOR
 
 @export var attack_speed := 1200.0
 

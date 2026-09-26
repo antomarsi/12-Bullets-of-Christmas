@@ -1,7 +1,7 @@
-extends Control
+extends Label
 
-@export (PackedScene) var next_world
-@export (float) var duration = 0.05
+@export_file("*.tscn") var next_world: String
+@export var duration := 0.05
 
 @onready var _anim_player := $AnimationPlayer
 
@@ -10,7 +10,7 @@ var letters = 0
 var oldVisible = 0
 
 func _ready():
-	lapsed = 0 
+	lapsed = 0
 	letters = text.length()
 	visible_characters = 0
 
@@ -20,11 +20,9 @@ func _process(delta):
 	if visible_characters >= letters:
 		$"../Timer".start()
 		set_process(false)
-	
+
 func _on_Timer_timeout():
 	_anim_player.play("fade")
-	pass # Replace with function body.
-
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	global.setScene(next_world)
+	get_tree().change_scene_to_file(next_world)

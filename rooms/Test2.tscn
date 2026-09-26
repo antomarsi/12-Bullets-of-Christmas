@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dnjaql6w83sen"]
 
-[ext_resource type="PackedScene" uid="uid://4afq30aju35l" path="res://Scenes/player/Player.tscn" id="1_lnc4f"]
-[ext_resource type="Texture2D" uid="uid://d2247htsdna36" path="res://Tileset/Wooden House.png" id="1_oe65h"]
-[ext_resource type="Texture2D" uid="uid://clo8emylimv4x" path="res://Tileset/tileset.png" id="2_mxrwc"]
+[ext_resource type="PackedScene" uid="uid://4afq30aju35l" path="res://scenes/player/Player.tscn" id="1_lnc4f"]
+[ext_resource type="Texture2D" uid="uid://d2247htsdna36" path="res://tileset/Wooden House.png" id="1_oe65h"]
+[ext_resource type="Texture2D" uid="uid://clo8emylimv4x" path="res://tileset/tileset.png" id="2_mxrwc"]
 [ext_resource type="Script" path="res://player/ShakingCamera.gd" id="4_0ppdk"]
-[ext_resource type="PackedScene" uid="uid://b711u0hu8b1fn" path="res://Scenes/entities/1-partridge/Partridge.tscn" id="5_dr5nv"]
+[ext_resource type="PackedScene" uid="uid://b711u0hu8b1fn" path="res://scenes/entities/1-partridge/Partridge.tscn" id="5_dr5nv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1b7d7"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

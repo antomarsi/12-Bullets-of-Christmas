@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3]
 
 [ext_resource type="PackedScene" path="res://mobs/Mob.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes/entities/1-partridge/Partridge.gd" id="2"]
+[ext_resource type="Script" path="res://mobs/french_hen/FrenchHen.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://b0ssa6gp6yn8l" path="res://mobs/french_hen/french_hen.png" id="3"]
 [ext_resource type="PackedScene" path="res://mobs/Cannon.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://dywjeodixrfro" path="res://bullets/pear_bullet/PearBullet.tscn" id="5"]

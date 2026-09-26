@@ -1,4 +1,4 @@
-extends Bullet
+extends BulletBase
 
 
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer

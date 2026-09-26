@@ -1,5 +1,7 @@
+# Godot 4+ generated cache (imports, shader cache, editor state)
+.godot/
+
 # Godot-specific ignores
-.import/
 export.cfg
 export_presets.cfg
 

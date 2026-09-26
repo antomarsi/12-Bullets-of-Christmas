@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dr4ctqu66otls"]
 
 [ext_resource type="PackedScene" path="res://interface/OnScreenUI.tscn" id="1"]
-[ext_resource type="AudioStream" uid="uid://c6cj5gxsj73iv" path="res://Music/guitar_loop_150bpm.ogg" id="3"]
-[ext_resource type="AudioStream" uid="uid://ykf35tkvtkle" path="res://Music/drum_loop_150bpm.ogg" id="4"]
-[ext_resource type="PackedScene" uid="uid://4afq30aju35l" path="res://Scenes/player/Player.tscn" id="4_vjikb"]
-[ext_resource type="Texture2D" uid="uid://clo8emylimv4x" path="res://Tileset/tileset.png" id="6_h8vpr"]
+[ext_resource type="AudioStream" uid="uid://c6cj5gxsj73iv" path="res://music/guitar_loop_150bpm.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://ykf35tkvtkle" path="res://music/drum_loop_150bpm.ogg" id="4"]
+[ext_resource type="PackedScene" uid="uid://4afq30aju35l" path="res://scenes/player/Player.tscn" id="4_vjikb"]
+[ext_resource type="Texture2D" uid="uid://clo8emylimv4x" path="res://tileset/tileset.png" id="6_h8vpr"]
 [ext_resource type="Script" path="res://rooms/BaseRoom.gd" id="12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p40f7"]
