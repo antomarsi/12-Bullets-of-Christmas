@@ -8,6 +8,7 @@ enum CollisionMask {
 }
 
 @export var BulletScene: PackedScene
+@export var shoot_sound: SoundSet = preload("res://data/sounds/enemy_shoot.tres")
 
 @export var collision_mask: CollisionMask = CollisionMask.PLAYER
 
@@ -23,6 +24,9 @@ enum CollisionMask {
 @onready var _position_2d := $Marker2D
 
 func shoot_at_target(target: Node2D) -> void:
+	if not ViewUtil.on_screen(self, 24.0):
+		return
+	shoot_sound.play(self, global_position)
 	look_at(target.global_position)
 	var bullet: BulletBase = BulletScene.instantiate()
 	bullet.global_transform = _position_2d.global_transform

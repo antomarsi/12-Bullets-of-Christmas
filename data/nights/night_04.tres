@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="NightConfig" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://resources/NightConfig.gd" id="1"]
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="2"]
+[ext_resource type="Script" path="res://resources/WaveEntry.gd" id="3"]
+[ext_resource type="PackedScene" path="res://mobs/french_hen/FrenchHen.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://mobs/partridge/Partridge.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://mobs/turtle_dove/TurtleDove.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://mobs/calling_bird/CallingBird.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_w1_hen"]
+script = ExtResource("3")
+mob_id = "hen"
+scene = ExtResource("4")
+count = 3
+
+[sub_resource type="Resource" id="Resource_wave1"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w1_hen")])
+
+[sub_resource type="Resource" id="Resource_w2_partridge"]
+script = ExtResource("3")
+mob_id = "partridge"
+scene = ExtResource("5")
+count = 1
+
+[sub_resource type="Resource" id="Resource_w2_dove"]
+script = ExtResource("3")
+mob_id = "dove"
+scene = ExtResource("6")
+count = 2
+
+[sub_resource type="Resource" id="Resource_wave2"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w2_partridge"), SubResource("Resource_w2_dove")])
+
+[sub_resource type="Resource" id="Resource_w3_calling_bird"]
+script = ExtResource("3")
+mob_id = "calling_bird"
+scene = ExtResource("7")
+count = 4
+
+[sub_resource type="Resource" id="Resource_wave3"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w3_calling_bird")])
+
+[resource]
+script = ExtResource("1")
+night = 4
+gift_name = "Four Calling Birds"
+tier = 2
+waves = Array[ExtResource("2")]([SubResource("Resource_wave1"), SubResource("Resource_wave2"), SubResource("Resource_wave3")])

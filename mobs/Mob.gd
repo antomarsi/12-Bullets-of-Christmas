@@ -43,8 +43,12 @@ var _drag_factor := 6.0
 @onready var _animation_player := $AnimationPlayer
 
 
+@export var always_aware := true
+
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	if always_aware:
+		_target = get_tree().get_first_node_in_group("player")
 	# This area detects when the player gets in range of the mob. Use it to play
 	# "wake-up" style animations, or get the mob to track the player.
 	_detection_area.connect("body_entered", Callable(self, "_on_DetectionArea_body_entered"))

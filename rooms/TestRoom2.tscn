@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://05dhgif7lvqx"]
 
 [ext_resource type="PackedScene" uid="uid://dr4ctqu66otls" path="res://rooms/BaseRoom.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://b711u0hu8b1fn" path="res://scenes/entities/1-partridge/Partridge.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://mobs/partridge/Partridge.tscn" id="2"]
 
 [node name="BaseRoom" instance=ExtResource("1")]
 

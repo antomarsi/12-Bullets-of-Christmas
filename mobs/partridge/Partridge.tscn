@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://mobs/Mob.tscn" id="1"]
+[ext_resource type="Script" path="res://mobs/partridge/Partridge.gd" id="2"]
+[ext_resource type="Texture2D" path="res://mobs/partridge/partridge-sheet.png" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 22.0
+height = 60.0
+
+[node name="Partridge" instance=ExtResource("1")]
+script = ExtResource("2")
+health = 30
+speed = 45.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("3")
+hframes = 3

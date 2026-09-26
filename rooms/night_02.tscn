@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://rooms/BaseRoom.tscn" id="1"]
+
+[node name="Night02" instance=ExtResource("1")]
+night = 2
+bounds = Rect2(0, 8, 1280, 704)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(640, 600)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnTopLeft" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(96, 96)
+
+[node name="SpawnTopRight" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1184, 96)
+
+[node name="SpawnMidLeft" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(96, 360)
+
+[node name="SpawnMidRight" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1184, 360)

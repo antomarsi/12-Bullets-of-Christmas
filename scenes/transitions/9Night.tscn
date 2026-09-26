@@ -400,7 +400,6 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-next_world = "res://scenes/levels/9Night.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="NightConfig" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://resources/NightConfig.gd" id="1"]
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="2"]
+[ext_resource type="Script" path="res://resources/WaveEntry.gd" id="3"]
+[ext_resource type="PackedScene" path="res://mobs/partridge/Partridge.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://mobs/turtle_dove/TurtleDove.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://mobs/french_hen/FrenchHen.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_w1_partridge"]
+script = ExtResource("3")
+mob_id = "partridge"
+scene = ExtResource("4")
+count = 1
+
+[sub_resource type="Resource" id="Resource_w1_dove"]
+script = ExtResource("3")
+mob_id = "dove"
+scene = ExtResource("5")
+count = 2
+
+[sub_resource type="Resource" id="Resource_wave1"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w1_partridge"), SubResource("Resource_w1_dove")])
+
+[sub_resource type="Resource" id="Resource_w2_hen"]
+script = ExtResource("3")
+mob_id = "hen"
+scene = ExtResource("6")
+count = 3
+
+[sub_resource type="Resource" id="Resource_wave2"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w2_hen")])
+
+[resource]
+script = ExtResource("1")
+night = 3
+gift_name = "Three French Hens"
+tier = 1
+waves = Array[ExtResource("2")]([SubResource("Resource_wave1"), SubResource("Resource_wave2")])

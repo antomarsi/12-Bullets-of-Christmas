@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="NightConfig" load_steps=33 format=3]
+
+[ext_resource type="Script" path="res://resources/NightConfig.gd" id="1"]
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="2"]
+[ext_resource type="Script" path="res://resources/WaveEntry.gd" id="3"]
+[ext_resource type="PackedScene" path="res://mobs/turtle_dove/TurtleDove.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://mobs/french_hen/FrenchHen.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://mobs/calling_bird/CallingBird.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://mobs/partridge/Partridge.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://mobs/five_golden_rings/FiveGoldenRings.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://mobs/geese_a_laying/GeeseALaying.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://mobs/swan_a_swimming/SwanASwimming.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://mobs/maids_a_milking/MaidAMilking.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://mobs/ladies_dancing/LadiesDancing.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://mobs/lords_a_leaping/LordsALeaping.tscn" id="13"]
+
+[sub_resource type="Resource" id="Resource_w1_dove"]
+script = ExtResource("3")
+mob_id = "dove"
+scene = ExtResource("4")
+count = 2
+
+[sub_resource type="Resource" id="Resource_w1_hen"]
+script = ExtResource("3")
+mob_id = "hen"
+scene = ExtResource("5")
+count = 3
+
+[sub_resource type="Resource" id="Resource_w1_calling_bird"]
+script = ExtResource("3")
+mob_id = "calling_bird"
+scene = ExtResource("6")
+count = 4
+
+[sub_resource type="Resource" id="Resource_wave1"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w1_dove"), SubResource("Resource_w1_hen"), SubResource("Resource_w1_calling_bird")])
+
+[sub_resource type="Resource" id="Resource_w2_partridge"]
+script = ExtResource("3")
+mob_id = "partridge"
+scene = ExtResource("7")
+count = 1
+
+[sub_resource type="Resource" id="Resource_w2_ring"]
+script = ExtResource("3")
+mob_id = "ring"
+scene = ExtResource("8")
+count = 5
+
+[sub_resource type="Resource" id="Resource_w2_goose"]
+script = ExtResource("3")
+mob_id = "goose"
+scene = ExtResource("9")
+count = 6
+
+[sub_resource type="Resource" id="Resource_wave2"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w2_partridge"), SubResource("Resource_w2_ring"), SubResource("Resource_w2_goose")])
+
+[sub_resource type="Resource" id="Resource_w3_swan"]
+script = ExtResource("3")
+mob_id = "swan"
+scene = ExtResource("10")
+count = 7
+
+[sub_resource type="Resource" id="Resource_w3_maid"]
+script = ExtResource("3")
+mob_id = "maid"
+scene = ExtResource("11")
+count = 8
+
+[sub_resource type="Resource" id="Resource_wave3"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w3_swan"), SubResource("Resource_w3_maid")])
+
+[sub_resource type="Resource" id="Resource_w4_lady"]
+script = ExtResource("3")
+mob_id = "lady"
+scene = ExtResource("12")
+count = 9
+
+[sub_resource type="Resource" id="Resource_wave4"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w4_lady")])
+
+[sub_resource type="Resource" id="Resource_w5_lord"]
+script = ExtResource("3")
+mob_id = "lord"
+scene = ExtResource("13")
+count = 10
+
+[sub_resource type="Resource" id="Resource_wave5"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w5_lord")])
+
+[sub_resource type="Resource" id="Resource_w6_piper"]
+script = ExtResource("3")
+mob_id = "piper"
+count = 11
+
+[sub_resource type="Resource" id="Resource_wave6"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w6_piper")])
+
+[sub_resource type="Resource" id="Resource_w7_drummer"]
+script = ExtResource("3")
+mob_id = "drummer"
+count = 12
+
+[sub_resource type="Resource" id="Resource_wave7"]
+script = ExtResource("2")
+entries = Array[ExtResource("3")]([SubResource("Resource_w7_drummer")])
+
+[resource]
+script = ExtResource("1")
+night = 12
+gift_name = "Twelve Drummers Drumming"
+tier = 1
+waves = Array[ExtResource("2")]([SubResource("Resource_wave1"), SubResource("Resource_wave2"), SubResource("Resource_wave3"), SubResource("Resource_wave4"), SubResource("Resource_wave5"), SubResource("Resource_wave6"), SubResource("Resource_wave7")])

@@ -19,7 +19,13 @@ var current_ammo : int
 var reloading = false
 var dead := false
 
+func heal(amount) -> void:
+	if dead:
+		return
+	health_component.health += amount
+
 func _ready():
+	add_to_group("player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	current_ammo = MAX_AMMO
 	health_component.MAX_HEALTH = MAX_HEALTH
@@ -39,6 +45,7 @@ func take_damage(amount) -> void:
 	health_component.health -= amount
 	if not dead:
 		_damage_audio.play()
+		get_tree().call_group("camera", "add_shake", 4.0)
 
 func _on_died() -> void:
 	dead = true
