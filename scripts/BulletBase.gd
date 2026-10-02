@@ -18,6 +18,14 @@ static func _default_attack() -> Attack:
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("area_entered", Callable(self, "_on_area_entered"))
+	_on_spawn()
+
+# Runs on every spawn, including pooled reuse (unlike _ready(), which only ever fires once per
+# Node's lifetime) — anything that needs to reset per-shot belongs here, not in _ready().
+func _on_spawn() -> void:
+	_has_hit = false
+	_travelled_distance = 0.0
+	_enable()
 	play_audio()
 
 func play_audio():
@@ -61,12 +69,30 @@ func _hit_area(area) -> void:
 func _passes_through(target) -> bool:
 	return target != null and target.has_method("is_invulnerable") and target.is_invulnerable()
 
+# Returns the bullet to the pool. Subclasses with an outro (impact animation/sound) should
+# disable immediately but defer calling this until the outro finishes, so it has time to play
+# while the node is still in the tree (see BasicBullet.gd).
 func _destroy() -> void:
-	queue_free()
+	_release()
+
+func _release() -> void:
+	_disable()
+	# Hits are detected from body_entered/area_entered, which fire during the physics step —
+	# Godot disallows removing a CollisionObject2D from the tree right then, so defer it. Pool the
+	# bullet together with (not before) the actual removal, or a shoot() call later this same
+	# frame could pop it from the pool and add_child() it while it's technically still parented.
+	call_deferred("_finish_release")
+
+func _finish_release() -> void:
+	if get_parent():
+		get_parent().remove_child(self)
+	BulletPattern.pool_release(self)
 
 func _disable() -> void:
 	set_physics_process(false)
-	set_deferred("monitoring", false)
+
+func _enable() -> void:
+	set_physics_process(true)
 
 func _on_body_entered(body) -> void:
 	if _has_hit or _passes_through(body):

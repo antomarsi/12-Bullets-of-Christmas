@@ -6,8 +6,17 @@ extends BulletBase
 
 func _ready() -> void:
 	_animation_player.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
-	_animation_player.play("spawn")
 	super._ready()
+
+# Reset visibility/scale directly (not just via the "RESET" animation) and immediately — an
+# AnimationPlayer's play() doesn't apply a track's keyframes synchronously, only on its own next
+# processing step, so a reused bullet could otherwise show a stale hidden/shrunk frame left over
+# from its last "destroy" play for a tick before "spawn" catches up.
+func _on_spawn() -> void:
+	_sprite.visible = true
+	_sprite.scale = Vector2.ONE
+	_animation_player.play("spawn")
+	super._on_spawn()
 
 func _destroy():
 	_disable()
@@ -17,4 +26,4 @@ func _destroy():
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "destroy":
-		queue_free()
+		_release()

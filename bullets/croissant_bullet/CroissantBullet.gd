@@ -8,8 +8,8 @@ extends BulletBase
 
 var _angular_speed := 0.0
 
-func _ready() -> void:
-	super._ready()
+func _on_spawn() -> void:
+	super._on_spawn()
 	_angular_speed = TAU / loop_time * curve_direction
 	max_range = speed * loop_time
 
