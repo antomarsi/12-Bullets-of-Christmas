@@ -8,7 +8,6 @@ extends Mob
 
 var _max_health := 0
 var _burst_timer := 1.2
-var _spiral_offset := 0.0
 var _anim_time := 0.0
 
 func _ready() -> void:
@@ -41,8 +40,11 @@ func _fire() -> void:
 		return
 	shoot_sound.play(self, global_position)
 	var count := 12 if _enraged() else 8
-	_spiral_offset += 0.35 if _enraged() else 0.2
-	BulletPattern.radial(bullet_scene, get_tree(), global_position, count, _spiral_offset, {"speed": 150.0, "max_range": 700.0})
+	# One arm of the burst always points exactly at the player's current position, recomputed
+	# fresh every burst, so the attack is a real threat instead of a fixed spread that can drift
+	# away from the player over time and never cross them again.
+	var aim_angle := global_position.angle_to_point(_target.global_position)
+	BulletPattern.radial(bullet_scene, get_tree(), global_position, count, aim_angle, {"speed": 150.0, "max_range": 700.0})
 
 func _on_DetectionArea_body_exited(_body: Player) -> void:
 	pass

@@ -47,7 +47,14 @@ func _hit_body(body) -> void:
 		body.take_damage(int(damage.attack_damage))
 
 func _hit_area(area) -> void:
-	if area is HitboxComponent and not area.get_parent().has_method("take_damage"):
+	if not area is HitboxComponent:
+		return
+	var parent = area.get_parent()
+	if parent.has_method("take_damage"):
+		# The parent manages its own health/invulnerability (e.g. the player) — call it
+		# directly instead of poking the HealthComponent, or the hit silently does nothing.
+		parent.take_damage(int(damage.attack_damage))
+	else:
 		area.damage(damage)
 
 # A rolling (or blinking) player cannot be hit, so bullets fly straight through instead of vanishing.
