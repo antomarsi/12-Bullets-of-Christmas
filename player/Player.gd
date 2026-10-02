@@ -17,11 +17,18 @@ extends CharacterBody2D
 @export var MAX_HEALTH := 8
 @export var hit_sound: SoundSet = preload("res://data/sounds/player_hit.tres")
 @export var hit_flash_color := Color(1.0, 0.25, 0.25)
+# Total i-frames after a hit (flash + blink). Bullet-hell nights fire in bursts, so this stays
+# short enough that a second bullet from the same burst can still land.
+@export var hit_invulnerable_time := 0.45
 
 @export_group("Roll")
 @export var roll_speed := 330.0
 @export var roll_duration := 0.32
 @export var roll_cooldown := 0.5
+# Speed multiplier at the start (>1 = a punchy burst) and end (<1 = coasting to a stop) of the
+# roll; it eases from one to the other (fast initial drop-off, gentle finish), not a straight line.
+@export var roll_start_speed_mult := 1.3
+@export var roll_end_speed_mult := 0.4
 # Optional horizontal strip of square frames (dive -> tucked roll -> recovery). Drop the PNG here
 # (or save it as res://player/roll_sheet.png); frame count is read from its width/height. Empty =
 # the normal sprite just spins during the roll.
@@ -102,15 +109,20 @@ func take_damage(amount) -> void:
 	get_tree().call_group("camera", "add_shake", 4.0)
 	_hit_feedback()
 
-# Red flash, then a short blink during which the player can't be hurt again.
+# Red flash, then a short blink during which the player can't be hurt again. Total length is
+# hit_invulnerable_time regardless of how many blink cycles that fits.
 func _hit_feedback() -> void:
 	_invulnerable = true
 	anim.modulate = hit_flash_color
 	var tween := create_tween()
-	tween.tween_property(anim, "modulate", Color.WHITE, 0.15)
-	for i in 6:
-		tween.tween_property(anim, "modulate:a", 0.25, 0.07)
-		tween.tween_property(anim, "modulate:a", 1.0, 0.07)
+	var flash_time := minf(0.1, hit_invulnerable_time * 0.3)
+	tween.tween_property(anim, "modulate", Color.WHITE, flash_time)
+	var blink_time := hit_invulnerable_time - flash_time
+	var cycles := maxi(roundi(blink_time / 0.1), 1)
+	var cycle_time := blink_time / cycles
+	for i in cycles:
+		tween.tween_property(anim, "modulate:a", 0.25, cycle_time * 0.5)
+		tween.tween_property(anim, "modulate:a", 1.0, cycle_time * 0.5)
 	tween.finished.connect(func():
 		_invulnerable = false
 		anim.modulate = Color.WHITE)
@@ -160,7 +172,10 @@ func _roll_step(delta: float) -> void:
 	var progress := 1.0 - _roll_left / roll_duration
 	if _roll_sprite:
 		_roll_sprite.frame = clampi(int(progress * _roll_frame_count), 0, _roll_frame_count - 1)
-	set_velocity(_roll_dir * roll_speed * lerpf(1.0, 0.55, progress))
+	# Ease-out: (1 - progress)^2 drops fast right after the punch, then flattens into the finish.
+	var ease_out := (1.0 - progress) * (1.0 - progress)
+	var speed_mult := lerpf(roll_end_speed_mult, roll_start_speed_mult, ease_out)
+	set_velocity(_roll_dir * roll_speed * speed_mult)
 	move_and_slide()
 	_roll_left -= delta
 	if _roll_left <= 0.0:
