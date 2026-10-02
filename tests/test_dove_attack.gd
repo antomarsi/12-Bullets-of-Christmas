@@ -38,6 +38,10 @@ func _process(delta) -> bool:
 	if frame == 3:
 		dove = load("res://mobs/turtle_dove/TurtleDove.tscn").instantiate()
 		dove.position = player.position + Vector2(200, 0)
+		var args := OS.get_cmdline_user_args()
+		if args.size() > 0:
+			dove.randomize_color = false
+			dove.selected_color = int(args[0])
 		room.get_node("Mobs").add_child(dove)
 		hp_start = player.health_component.health
 	if dove == null:

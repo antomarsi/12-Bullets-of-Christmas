@@ -4,21 +4,5 @@
 
 [node name="Night02" instance=ExtResource("1")]
 night = 2
-bounds = Rect2(0, 8, 1280, 704)
-
-[node name="Player" parent="." index="1"]
-position = Vector2(640, 600)
-
-[node name="SpawnPoints" type="Node2D" parent="."]
-
-[node name="SpawnTopLeft" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(96, 96)
-
-[node name="SpawnTopRight" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1184, 96)
-
-[node name="SpawnMidLeft" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(96, 360)
-
-[node name="SpawnMidRight" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1184, 360)
+tile_map_size = Vector2i(40, 22)
+pillars = Array[Rect2i]([Rect2i(8, 6, 3, 3), Rect2i(29, 6, 3, 3), Rect2i(8, 14, 3, 3), Rect2i(29, 14, 3, 3), Rect2i(18, 10, 4, 3)])
