@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ssa6gp6yn8l"
-path="res://.godot/imported/french_hen.png-35c1d7fd9023e5a07945ef632e1bf843.ctex"
+uid="uid://cx1enf47mlcc3"
+path="res://.godot/imported/croissant.png-357509ba2c48fb90ea1aa8661d2fa867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mobs/french_hen/french_hen.png"
-dest_files=["res://.godot/imported/french_hen.png-35c1d7fd9023e5a07945ef632e1bf843.ctex"]
+source_file="res://bullets/croissant_bullet/croissant.png"
+dest_files=["res://.godot/imported/croissant.png-357509ba2c48fb90ea1aa8661d2fa867.ctex"]
 
 [params]
 
