@@ -2,8 +2,6 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://sprites/enemies/maid_a_milking1.png" type="Texture2D" id=18]
-[ext_resource path="res://sprites/enemies/maid_a_milking2.png" type="Texture2D" id=19]
 [ext_resource path="res://sprites/enemies/lady_dancing2.png" type="Texture2D" id=21]
 [ext_resource path="res://sprites/enemies/piper_piping1.png" type="Texture2D" id=23]
 [ext_resource path="res://sprites/enemies/piper_piping2.png" type="Texture2D" id=24]
@@ -17,6 +15,15 @@
 [ext_resource path="res://mobs/swan_a_swimming/SwanASwimming.png" type="Texture2D" id=32]
 [ext_resource path="res://mobs/turtle_dove/Turtle_dove.png" type="Texture2D" id=33]
 [ext_resource path="res://mobs/ladies_dancing/LadiesDancing.png" type="Texture2D" id=34]
+[ext_resource path="res://mobs/maids_a_milking/MaidAMilking.png" type="Texture2D" id=35]
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 35 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 35 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 27 )
@@ -469,7 +476,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=12]
 
 animations = [ {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
