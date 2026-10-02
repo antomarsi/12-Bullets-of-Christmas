@@ -2,14 +2,37 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://sprites/enemies/partridge1.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/enemies/partridge2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/enemies/partridge3.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b1.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b2.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o2.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o1.png" type="Texture2D" id=9]
 [ext_resource path="res://music/verses/track_2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://mobs/partridge/partridge-sheet.png" type="Texture2D" id=11]
+[ext_resource path="res://mobs/turtle_dove/Turtle_dove.png" type="Texture2D" id=12]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="Environment" id=1]
 
@@ -223,7 +246,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 8 ), SubResource( 10 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -232,7 +255,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -241,7 +264,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ SubResource( 14 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

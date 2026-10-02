@@ -2,27 +2,82 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://sprites/enemies/partridge1.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/enemies/partridge2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/enemies/partridge3.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/enemies/Calling-Bird1.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/enemies/Calling-Bird2.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/enemies/french_hen1.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/enemies/french_hen2.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b1.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b2.png" type="Texture2D" id=11]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o2.png" type="Texture2D" id=12]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o1.png" type="Texture2D" id=13]
-[ext_resource path="res://sprites/enemies/geese_a_laying1.png" type="Texture2D" id=14]
-[ext_resource path="res://sprites/enemies/geese_a_laying2.png" type="Texture2D" id=15]
-[ext_resource path="res://sprites/enemies/swan_a_swimming1.png" type="Texture2D" id=16]
-[ext_resource path="res://sprites/enemies/swan_a_swimming2.png" type="Texture2D" id=17]
 [ext_resource path="res://sprites/enemies/maid_a_milking1.png" type="Texture2D" id=18]
 [ext_resource path="res://sprites/enemies/maid_a_milking2.png" type="Texture2D" id=19]
-[ext_resource path="res://sprites/enemies/lady_dancing1.png" type="Texture2D" id=20]
 [ext_resource path="res://sprites/enemies/lady_dancing2.png" type="Texture2D" id=21]
 [ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture2D" id=22]
 [ext_resource path="res://music/verses/track_9.ogg" type="AudioStream" id=23]
+[ext_resource path="res://mobs/calling_bird/CallingBird.png" type="Texture2D" id=24]
+[ext_resource path="res://mobs/french_hen/french_hen.png" type="Texture2D" id=25]
+[ext_resource path="res://mobs/geese_a_laying/GeeseALaying.png" type="Texture2D" id=26]
+[ext_resource path="res://mobs/partridge/partridge-sheet.png" type="Texture2D" id=27]
+[ext_resource path="res://mobs/swan_a_swimming/SwanASwimming.png" type="Texture2D" id=28]
+[ext_resource path="res://mobs/turtle_dove/Turtle_dove.png" type="Texture2D" id=29]
+[ext_resource path="res://mobs/ladies_dancing/LadiesDancing.png" type="Texture2D" id=30]
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 51, 45 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 24 )
+region = Rect2( 51, 0, 51, 45 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 59, 63 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 25 )
+region = Rect2( 59, 0, 59, 63 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 26 )
+region = Rect2( 0, 0, 38, 40 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 26 )
+region = Rect2( 38, 0, 38, 40 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 27 )
+region = Rect2( 64, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 27 )
+region = Rect2( 128, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 48, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 28 )
+region = Rect2( 48, 0, 48, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 29 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 29 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 75, 77 )
 
 [sub_resource type="Environment" id=1]
 
@@ -320,7 +375,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 20 ), SubResource( 22 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -329,7 +384,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -338,7 +393,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -347,7 +402,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=8]
 
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -356,7 +411,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=9]
 
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ SubResource( 28 ), SubResource( 27 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -365,7 +420,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=10]
 
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -374,7 +429,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=11]
 
 animations = [ {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -392,7 +447,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=13]
 
 animations = [ {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"frames": [ SubResource( 29 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

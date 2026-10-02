@@ -2,18 +2,55 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://sprites/enemies/partridge1.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/enemies/partridge2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/enemies/partridge3.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b1.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_b2.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o2.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/enemies/td/Turtle_dove_o1.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/enemies/french_hen1.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/enemies/french_hen2.png" type="Texture2D" id=11]
-[ext_resource path="res://sprites/enemies/Calling-Bird1.png" type="Texture2D" id=12]
-[ext_resource path="res://sprites/enemies/Calling-Bird2.png" type="Texture2D" id=13]
 [ext_resource path="res://music/verses/track_4.ogg" type="AudioStream" id=14]
+[ext_resource path="res://mobs/calling_bird/CallingBird.png" type="Texture2D" id=15]
+[ext_resource path="res://mobs/french_hen/french_hen.png" type="Texture2D" id=16]
+[ext_resource path="res://mobs/partridge/partridge-sheet.png" type="Texture2D" id=17]
+[ext_resource path="res://mobs/turtle_dove/Turtle_dove.png" type="Texture2D" id=18]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 51, 45 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 15 )
+region = Rect2( 51, 0, 51, 45 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 59, 63 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 16 )
+region = Rect2( 59, 0, 59, 63 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 17 )
+region = Rect2( 128, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="Environment" id=1]
 
@@ -239,7 +276,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -248,7 +285,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -257,7 +294,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ SubResource( 20 ), SubResource( 19 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -266,7 +303,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=8]
 
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -275,7 +312,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=9]
 
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

@@ -2,10 +2,20 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://sprites/enemies/partridge1.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/enemies/partridge2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/enemies/partridge3.png" type="Texture2D" id=5]
 [ext_resource path="res://transitions/1Night.ogg" type="AudioStream" id=6]
+[ext_resource path="res://mobs/partridge/partridge-sheet.png" type="Texture2D" id=7]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 128, 0, 64, 80 )
 
 [sub_resource type="Environment" id=1]
 
@@ -183,7 +193,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 6 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
