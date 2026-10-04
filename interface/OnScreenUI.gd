@@ -3,6 +3,16 @@ extends Control
 const BULLET_ICON := preload("res://bullets/basic_bullet/bullet.png")
 const FONT := preload("res://fonts/pixelart.ttf")
 
+# Must match GameCamera's fixed 2x zoom and 640x360 world view (see CLAUDE.md's Display-and-camera
+# note) — the UI is laid out for a fixed 1280x720 regardless of real window size (canvas_items
+# stretch handles that uniformly for both UI and world), so these can be hardcoded rather than
+# read from the camera, and the arithmetic stays correct at any actual display resolution.
+const VIEW_ZOOM := 2.0
+const VIEW_CENTER := Vector2(640.0, 360.0)
+const ARROW_MARGIN := 40.0
+const ARROW_SIZE := 12.0
+const ARROW_COLOR := Color(1.0, 0.3, 0.3, 0.85)
+
 @onready var _health_bar := $container/HealthBar
 
 var _player = null
@@ -68,3 +78,34 @@ func _process(_delta: float) -> void:
 	for i in _ammo_icons.size():
 		_ammo_icons[i].modulate = Color(1, 1, 1, 1) if i < filled else Color(1, 1, 1, 0.25)
 	_reload_label.visible = _player.reloading
+	queue_redraw()
+
+# Points a small arrow at the screen edge toward every off-screen enemy, for Large-tier rooms
+# where enemies can be out of view (the follow camera clamps to the room bounds, so enemies stay
+# in-world but not necessarily on-screen). Drawn in this Control's own local space, which the root
+# node's anchors (fills its parent edge-to-edge, no offset) make equivalent to the fixed 1280x720
+# UI layout — mapping a world position into that space has to go through the ACTIVE GAME CAMERA,
+# not this Control's own canvas transform (the UI layer intentionally ignores the game camera's
+# zoom entirely, per the Display-and-camera note in CLAUDE.md, so they're different spaces).
+func _draw() -> void:
+	var camera := get_viewport().get_camera_2d()
+	if camera == null:
+		return
+	for mob in get_tree().get_nodes_in_group("mobs"):
+		if not is_instance_valid(mob) or not (mob is Node2D):
+			continue
+		if ViewUtil.on_screen(mob, 0.0):
+			continue
+		var rel: Vector2 = mob.global_position - camera.global_position
+		if rel == Vector2.ZERO:
+			continue
+		var dir := rel.normalized()
+		var ui_pos: Vector2 = rel * VIEW_ZOOM + VIEW_CENTER
+		var edge := Vector2(
+			clampf(ui_pos.x, ARROW_MARGIN, 1280.0 - ARROW_MARGIN),
+			clampf(ui_pos.y, ARROW_MARGIN, 720.0 - ARROW_MARGIN)
+		)
+		var tip := edge + dir * ARROW_SIZE
+		var side := dir.orthogonal() * ARROW_SIZE * 0.6
+		var back := edge - dir * ARROW_SIZE * 0.4
+		draw_colored_polygon(PackedVector2Array([tip, back + side, back - side]), ARROW_COLOR)

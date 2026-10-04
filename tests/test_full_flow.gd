@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Menu -> Intro -> verse screen -> night 1 -> verse screen -> night 2 -> verse screen -> night 3
-# -> night select, with a temp save file.
+# -> verse screen -> night 4 -> night select, with a temp save file.
 var frame := 0
 var sequence := []
 var last_path := ""
@@ -66,7 +66,7 @@ func _finish() -> bool:
 	print(select_report)
 	print("cleared in temp save: ", save.cleared.keys())
 	DirAccess.remove_absolute(ProjectSettings.globalize_path("user://test_save.cfg"))
-	var expected := ["Main.tscn", "Intro.tscn", "1Night.tscn", "night_01.tscn", "2Night.tscn", "night_02.tscn", "3Night.tscn", "night_03.tscn", "NightSelect.tscn"]
-	var cleared_all: bool = save.cleared.has(1) and save.cleared.has(2) and save.cleared.has(3)
+	var expected := ["Main.tscn", "Intro.tscn", "1Night.tscn", "night_01.tscn", "2Night.tscn", "night_02.tscn", "3Night.tscn", "night_03.tscn", "4Night.tscn", "night_04.tscn", "NightSelect.tscn"]
+	var cleared_all: bool = save.cleared.has(1) and save.cleared.has(2) and save.cleared.has(3) and save.cleared.has(4)
 	print("full flow test: ", "PASS" if sequence == expected and cleared_all else "FAIL")
 	return true
