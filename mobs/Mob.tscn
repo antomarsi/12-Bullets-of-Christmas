@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bi2q1msp7bjrg"]
+[gd_scene load_steps=12 format=3 uid="uid://bi2q1msp7bjrg"]
 
 [ext_resource type="Script" path="res://mobs/Mob.gd" id="1"]
-[ext_resource type="Texture2D" path="res://mobs/partridge_pear_tree.png" id="2"]
 [ext_resource type="AudioStream" path="res://player/PlayerHit.wav" id="3"]
 [ext_resource type="AudioStream" path="res://mobs/EnemyHit.wav" id="4"]
 
@@ -95,7 +94,6 @@ monitorable = false
 shape = SubResource("CircleShape2D_attack")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2")
 
 [node name="Alert" type="Sprite2D" parent="Sprite2D"]
 
