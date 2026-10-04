@@ -103,6 +103,10 @@ stream = ExtResource("3")
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+
 [node name="CoolDownTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

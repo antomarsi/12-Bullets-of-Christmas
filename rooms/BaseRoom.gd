@@ -100,9 +100,61 @@ func _build_tiles() -> void:
 		floor_layer.set_cell(cell, 0, FLOOR_TILES[0])
 		wall_layer.set_cell(cell, 0, variants[(cell.x * 3 + cell.y * 5) % variants.size()])
 
+	_build_navigation(total, t)
+
 	var player := get_node_or_null("Player") as Node2D
 	if player:
 		player.position = Vector2(total.x * TILE / 2.0, (total.y - t - 5) * TILE)
+
+# The floor-minus-pillars outline is built manually (reused from the same data _build_tiles()
+# already computes), but the hole-cutting itself goes through NavigationServer2D's modern baking
+# API, not NavigationPolygon.make_polygons_from_outlines() — that call is not just deprecated, it
+# can hang the engine outright on some inputs (several open Godot reports; reproduced here too:
+# a two-hole room genuinely froze instead of erroring). Baking also deliberately does NOT parse
+# collision from the Floor/Walls TileMapLayer children (a separate confirmed Godot bug: a region
+# only respects the FIRST TileMapLayer child's collision when it has more than one —
+# godotengine/godot#85588 — and Floor (no collision, added first) + Walls (has collision, added
+# second) is exactly that shape) — instead, temporary plain StaticBody2D obstacles stand in for
+# the pillars, parsed and discarded within this one function call.
+func _build_navigation(total: Vector2i, t: int) -> void:
+	var old_region := get_node_or_null("NavRegion")
+	if old_region:
+		old_region.queue_free()
+
+	var nav_poly := NavigationPolygon.new()
+	var floor_min := Vector2(t * TILE, t * TILE)
+	var floor_max := Vector2((total.x - t) * TILE, (total.y - t) * TILE)
+	nav_poly.add_outline(PackedVector2Array([
+		Vector2(floor_min.x, floor_min.y),
+		Vector2(floor_max.x, floor_min.y),
+		Vector2(floor_max.x, floor_max.y),
+		Vector2(floor_min.x, floor_max.y),
+	]))
+	nav_poly.parsed_geometry_type = NavigationPolygon.PARSED_GEOMETRY_STATIC_COLLIDERS
+
+	var obstacle_root := Node2D.new()
+	add_child(obstacle_root)
+	for r in pillars:
+		var p_min := Vector2((r.position.x + t) * TILE, (r.position.y + t) * TILE)
+		var p_max := Vector2((r.end.x + t) * TILE, (r.end.y + t) * TILE)
+		var body := StaticBody2D.new()
+		body.position = (p_min + p_max) / 2.0
+		var shape := CollisionShape2D.new()
+		var rect := RectangleShape2D.new()
+		rect.size = p_max - p_min
+		shape.shape = rect
+		body.add_child(shape)
+		obstacle_root.add_child(body)
+
+	var source_geometry := NavigationMeshSourceGeometryData2D.new()
+	NavigationServer2D.parse_source_geometry_data(nav_poly, source_geometry, obstacle_root)
+	NavigationServer2D.bake_from_source_geometry_data(nav_poly, source_geometry)
+	obstacle_root.queue_free()
+
+	var nav_region := NavigationRegion2D.new()
+	nav_region.name = "NavRegion"
+	nav_region.navigation_polygon = nav_poly
+	add_child(nav_region)
 
 func has_tiles() -> bool:
 	return not _floor_cells.is_empty()

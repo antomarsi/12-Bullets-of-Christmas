@@ -24,6 +24,7 @@ var _drag_factor := 6.0
 # Detects when player is close
 
 
+@onready var _nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _detection_area := $DetectionArea
 # Detects when player is within attack range; smaller than detection area.
 @onready var _attack_area := $AttackArea
@@ -103,12 +104,26 @@ func is_ready_to_attack() -> bool:
 	)
 
 func follow(target_global_position: Vector2) -> void:
-	var desired_velocity := global_position.direction_to(target_global_position) * speed
+	var steer_target := target_global_position
+	# Route around obstacles when a room has baked a navmesh (tile rooms only — see BaseRoom.gd);
+	# legacy night==0 test rooms with no tile map never get a NavRegion, so this stays false there
+	# and behavior is unchanged. A brand-new region can take a physics tick to register with the
+	# server, so "no path yet" is treated the same as "no navigation at all" — falls back to a
+	# direct line for that one tick instead of stalling, and self-corrects next frame.
+	if _navigation_available():
+		_nav_agent.target_position = target_global_position
+		if not _nav_agent.is_navigation_finished():
+			steer_target = _nav_agent.get_next_path_position()
+	var desired_velocity := global_position.direction_to(steer_target) * speed
 	var steering := desired_velocity - _velocity
 	_velocity += steering / _drag_factor
 	set_velocity(_velocity)
 	move_and_slide()
 	_velocity = velocity
+
+func _navigation_available() -> bool:
+	var map := get_world_2d().navigation_map
+	return NavigationServer2D.map_get_regions(map).size() > 0
 
 func orbit_target() -> void:
 	if not _target:
