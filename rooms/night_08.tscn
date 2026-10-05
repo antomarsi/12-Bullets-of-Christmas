@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://rooms/BaseRoom.tscn" id="1"]
+
+[node name="Night08" instance=ExtResource("1")]
+night = 8
+tile_map_size = Vector2i(48, 27)
+pillars = Array[Rect2i]([Rect2i(8, 6, 2, 2), Rect2i(16, 6, 2, 2), Rect2i(30, 6, 2, 2), Rect2i(38, 6, 2, 2), Rect2i(8, 18, 2, 2), Rect2i(16, 18, 2, 2), Rect2i(30, 18, 2, 2), Rect2i(38, 18, 2, 2)])
