@@ -2,7 +2,7 @@
 
 [ext_resource path="res://transitions/Night.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pixelart.ttf" type="FontFile" id=2]
-[ext_resource path="res://mobs/five_golden_rings/FiveGoldRings.png" type="Texture2D" id=16]
+[ext_resource path="res://mobs/five_golden_rings/ring.png" type="Texture2D" id=16]
 [ext_resource path="res://music/verses/track_6.ogg" type="AudioStream" id=17]
 [ext_resource path="res://mobs/calling_bird/CallingBird.png" type="Texture2D" id=18]
 [ext_resource path="res://mobs/french_hen/french_hen.png" type="Texture2D" id=19]
