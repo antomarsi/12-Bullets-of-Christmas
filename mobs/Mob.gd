@@ -169,6 +169,14 @@ func _on_DetectionArea_body_entered(body: Player) -> void:
 	_sprite_alert.visible = true
 
 func _on_DetectionArea_body_exited(_body: Player) -> void:
+	# An always_aware mob should never lose its target through this signal — DetectionArea can
+	# report a spurious exit (even for a single newly-added mob, not just several added in the
+	# same frame) while the physics server's overlap state first settles, which would otherwise
+	# null _target forever (nothing else ever re-targets the player for an always-aware mob) and
+	# silently freeze whatever _physics_process does with it. Found via test_five_golden_rings.gd
+	# and test_goose_attack.gd hitting the same failure independently.
+	if always_aware:
+		return
 	_target = null
 	_sprite_alert.visible = false
 	

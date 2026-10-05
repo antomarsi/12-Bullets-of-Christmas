@@ -41,12 +41,9 @@ func _on_DetectionArea_body_entered(body: Player) -> void:
 	_target = body
 	_line_of_sight.enabled = true
 
-# Rings default to always_aware (the wave-spawned instances never turn it off), so a detection
-# exit must not null the target — with 5 rings added to the tree in the same frame, the physics
-# server can report one spurious enter+exit pair while overlaps first settle, which would
-# otherwise null _target forever (nothing else ever re-targets the player) and freeze the ring's
-# whole _physics_process, found via test_five_golden_rings.gd.
 func _on_DetectionArea_body_exited(_body: Player) -> void:
+	# Mob.gd's base handler already ignores this for an always_aware mob (which every ring is) —
+	# this override only needs to add the line-of-sight toggle on top.
 	if always_aware:
 		return
 	_target = null
