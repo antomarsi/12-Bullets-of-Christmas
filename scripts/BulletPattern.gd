@@ -45,7 +45,16 @@ static func shoot(scene: PackedScene, tree: SceneTree, pos: Vector2, angle: floa
 	return bullet
 
 static func aimed(scene: PackedScene, tree: SceneTree, pos: Vector2, target: Vector2, opts := {}) -> BulletBase:
-	return shoot(scene, tree, pos, pos.angle_to_point(target) + PI, opts)
+	# No "+ PI" here — angle_to_point(target) already points from pos toward target. This had
+	# zero callers anywhere in the project (confirmed by grep) until SineBullet/PiperPiping, so
+	# the "+ PI" reversal here had never actually been exercised; found via an isolated bullet
+	# trajectory test when piper notes flew directly away from the player instead of toward them.
+	# Partridge.gd's own aim (`angle_to_point(target)`, no "+ PI", confirmed correct by
+	# test_partridge_aim.gd) is the validated reference this was checked against. FrenchHen's
+	# croissant fan uses the same "+ PI" pattern directly (not through this function) and is left
+	# as-is — it self-corrects regardless of initial direction because CroissantBullet curves in
+	# a full circle back to the throw point, which is exactly why this bug could hide there.
+	return shoot(scene, tree, pos, pos.angle_to_point(target), opts)
 
 static func fan(scene: PackedScene, tree: SceneTree, pos: Vector2, aim_angle: float, count: int, spread_deg: float, opts := {}) -> Array:
 	var bullets := []
