@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NightConfig" load_steps=31 format=3]
+[gd_resource type="Resource" script_class="NightConfig" load_steps=32 format=3]
 
 [ext_resource type="Script" path="res://resources/NightConfig.gd" id="1"]
 [ext_resource type="Script" path="res://resources/WaveData.gd" id="2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://mobs/maids_a_milking/MaidAMilking.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://mobs/ladies_dancing/LadiesDancing.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://mobs/lords_a_leaping/LordsALeaping.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://mobs/piper_piping/PiperPiping.tscn" id="14"]
 
 [sub_resource type="Resource" id="Resource_w1_dove"]
 script = ExtResource("3")
@@ -97,6 +98,7 @@ entries = Array[ExtResource("3")]([SubResource("Resource_w5_lord")])
 [sub_resource type="Resource" id="Resource_w6_piper"]
 script = ExtResource("3")
 mob_id = "piper"
+scene = ExtResource("14")
 count = 11
 
 [sub_resource type="Resource" id="Resource_wave6"]
