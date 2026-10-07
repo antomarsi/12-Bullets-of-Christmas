@@ -13,7 +13,6 @@ extents = Vector2( 36.8654, 25.2706 )
 
 [node name="LordsALeaping" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-attack_speed = 800.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 2 )

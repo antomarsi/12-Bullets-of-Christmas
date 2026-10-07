@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Menu -> Intro -> verse screen -> night 1 -> verse screen -> night 2 -> verse screen -> night 3
-# -> ... -> verse screen -> night 9 -> night select, with a temp save file.
+# -> ... -> verse screen -> night 10 -> night select, with a temp save file.
 var frame := 0
 var sequence := []
 var last_path := ""
@@ -66,7 +66,7 @@ func _finish() -> bool:
 	print(select_report)
 	print("cleared in temp save: ", save.cleared.keys())
 	DirAccess.remove_absolute(ProjectSettings.globalize_path("user://test_save.cfg"))
-	var expected := ["Main.tscn", "Intro.tscn", "1Night.tscn", "night_01.tscn", "2Night.tscn", "night_02.tscn", "3Night.tscn", "night_03.tscn", "4Night.tscn", "night_04.tscn", "5Night.tscn", "night_05.tscn", "6Night.tscn", "night_06.tscn", "7Night.tscn", "night_07.tscn", "8Night.tscn", "night_08.tscn", "9Night.tscn", "night_09.tscn", "NightSelect.tscn"]
-	var cleared_all: bool = save.cleared.has(1) and save.cleared.has(2) and save.cleared.has(3) and save.cleared.has(4) and save.cleared.has(5) and save.cleared.has(6) and save.cleared.has(7) and save.cleared.has(8) and save.cleared.has(9)
+	var expected := ["Main.tscn", "Intro.tscn", "1Night.tscn", "night_01.tscn", "2Night.tscn", "night_02.tscn", "3Night.tscn", "night_03.tscn", "4Night.tscn", "night_04.tscn", "5Night.tscn", "night_05.tscn", "6Night.tscn", "night_06.tscn", "7Night.tscn", "night_07.tscn", "8Night.tscn", "night_08.tscn", "9Night.tscn", "night_09.tscn", "10Night.tscn", "night_10.tscn", "NightSelect.tscn"]
+	var cleared_all: bool = save.cleared.has(1) and save.cleared.has(2) and save.cleared.has(3) and save.cleared.has(4) and save.cleared.has(5) and save.cleared.has(6) and save.cleared.has(7) and save.cleared.has(8) and save.cleared.has(9) and save.cleared.has(10)
 	print("full flow test: ", "PASS" if sequence == expected and cleared_all else "FAIL")
 	return true
